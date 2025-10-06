@@ -39,14 +39,13 @@ const Tips = ({ creatorId }: { creatorId: string }) => {
   }, [creatorId]);
 
   useEffect(() => {
-    // Only start polling if we have tips and we're not loading
-    if (loading || tips.length === 0) {
+    // Only start polling once loading is complete
+    if (loading) {
       return;
     }
 
     const fetchNewTips = async () => {
       const latestCreatedAt = getLatestCreatedAt(tips);
-      console.log(latestCreatedAt);
       const newTips = await getTips(creatorId, latestCreatedAt?.toString());
       if (newTips && newTips.length > 0) {
         setTips((prevTips) => [...prevTips, ...newTips]);

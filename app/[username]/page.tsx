@@ -1,6 +1,6 @@
 import Client from "./Client";
 
-const page = async ({ params }: { params: { username: string } }) => {
+const page = async ({ params }: { params: Promise<{ username: string }> }) => {
   const { username } = await params;
 
   return (

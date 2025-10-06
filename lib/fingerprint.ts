@@ -1,7 +1,7 @@
 import FingerprintJS from "@fingerprintjs/fingerprintjs";
 
 // Initialize an agent at application startup.
-let fpPromise: Promise<any> | null = null;
+let fpPromise: ReturnType<typeof FingerprintJS.load> | null = null;
 
 // Create a function to get the visitor identifier.
 export const getVisitorId = async () => {

@@ -1,12 +1,16 @@
 import Client from "./Client";
+import CreatorCard from "./CreatorCard";
 
 const page = async ({ params }: { params: Promise<{ username: string }> }) => {
   const { username } = await params;
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold">Welcome, {username}!</h1>
-      <Client username={username} />;
+    <div className="max-w-2xl mx-auto p-4">
+      <CreatorCard />
+      <div className="my-4">
+
+      <Client username={username} />
+      </div>
     </div>
   );
 };

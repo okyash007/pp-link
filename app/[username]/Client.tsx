@@ -31,8 +31,10 @@ const Client = ({ username }: { username: string }) => {
         //   contact: "9999999999",
         // },
         notes: {
-          visit_id: visitorId || "unknown",
+          visitor_id: visitorId || "unknown",
           creator_id: username,
+          message: "Test Message",
+          name: "Test Name",
         },
         theme: {
           color: "#3399cc",

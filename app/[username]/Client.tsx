@@ -1,9 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { getVisitorId } from "@/lib/fingerprint";
 import { useEffect, useState } from "react";
-import { Skeleton } from "@/components/ui/skeleton";
 import Tips from "./Tips";
 import RazorPayBtn from "./RazorPayBtn";
 import { useFpStore } from "@/store/fpStore";
@@ -18,7 +16,7 @@ const Client = ({ username }: { username: string }) => {
       const hfp = await getVisitorId();
       setFp(hfp || "");
     })();
-  }, []);
+  }, [setFp]);
 
   return (
     <div className="space-y-4">

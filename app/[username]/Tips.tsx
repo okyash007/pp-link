@@ -2,8 +2,18 @@ import { getTips } from "@/backend/getTips";
 import { useEffect, useState } from "react";
 import TipCard from "./TipCard";
 
+// Define tip interface
+interface Tip {
+  id: string;
+  amount: number;
+  currency: string;
+  visitor_name: string;
+  message?: string;
+  created_at: number;
+}
+
 // Function to get the latest created_at from tips array
-const getLatestCreatedAt = (tips: any[]): number | null => {
+const getLatestCreatedAt = (tips: Tip[]): number | null => {
   if (!tips || tips.length === 0) {
     return null;
   }
@@ -14,7 +24,7 @@ const getLatestCreatedAt = (tips: any[]): number | null => {
 };
 
 const Tips = ({ creatorId }: { creatorId: string }) => {
-  const [tips, setTips] = useState<any[]>([]);
+  const [tips, setTips] = useState<Tip[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

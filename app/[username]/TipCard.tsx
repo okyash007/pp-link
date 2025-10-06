@@ -5,7 +5,17 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-const TipCard = ({ tip }: { tip: any }) => {
+// Define tip interface
+interface Tip {
+  id: string;
+  amount: number;
+  currency: string;
+  visitor_name: string;
+  message?: string;
+  created_at: number;
+}
+
+const TipCard = ({ tip }: { tip: Tip }) => {
   console.log(tip);
   
   const formatAmount = (amount: number, currency: string) => {
@@ -26,26 +36,26 @@ const TipCard = ({ tip }: { tip: any }) => {
     return symbols[currency.toLowerCase()] || currency.toUpperCase();
   };
 
-  const formatDate = (dateString: string) => {
+  const formatDate = (timestamp: number) => {
     try {
-      const date = new Date(Math.floor(Number(dateString)) * 1000);
+      const date = new Date(Math.floor(timestamp) * 1000);
       if (isNaN(date.getTime())) {
         return 'Invalid Date';
       }
       return date.toLocaleDateString();
-    } catch (error) {
+    } catch {
       return 'Invalid Date';
     }
   };
 
-  const formatTime = (dateString: string) => {
+  const formatTime = (timestamp: number) => {
     try {
-      const date = new Date(Math.floor(Number(dateString)) * 1000);
+      const date = new Date(Math.floor(timestamp) * 1000);
       if (isNaN(date.getTime())) {
         return 'Invalid Time';
       }
       return date.toLocaleTimeString();
-    } catch (error) {
+    } catch {
       return 'Invalid Time';
     }
   };
@@ -93,7 +103,7 @@ const TipCard = ({ tip }: { tip: any }) => {
                     </div>
                     <div className="flex-1">
                       <p className="text-gray-700 leading-relaxed italic">
-                        "{tip.message}"
+                        &ldquo;{tip.message}&rdquo;
                       </p>
                     </div>
                   </div>

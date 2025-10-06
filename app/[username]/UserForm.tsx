@@ -1,8 +1,6 @@
 import { getUserByFp } from "@/backend/getUser";
-import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -12,7 +10,6 @@ import {
 import { useFpStore } from "@/store/fpStore";
 import { useUserStore } from "@/store/userStore";
 import { useEffect, useState } from "react";
-import { ArrowRightIcon } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -43,7 +40,7 @@ const UserForm = ({
         setLoading(false);
       })();
     }
-  }, [fp]);
+  }, [fp, user]);
 
   if (loading) {
     return (

@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import { useFpStore } from "@/store/fpStore";
 import { useUserStore } from "@/store/userStore";
 
@@ -71,6 +72,10 @@ const RazorPayBtn = ({
       rzp1.open();
     }
   };
+
+  if(!fp){
+    return <Skeleton className="w-full h-9" />
+  }
 
   return (
     <Button

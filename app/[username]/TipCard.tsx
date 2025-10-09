@@ -16,7 +16,6 @@ interface Tip {
 }
 
 const TipCard = ({ tip }: { tip: Tip }) => {
-  console.log(tip);
   
   const formatAmount = (amount: number, currency: string) => {
     return new Intl.NumberFormat('en-US', {

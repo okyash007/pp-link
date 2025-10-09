@@ -1,6 +1,7 @@
 import { getTips } from "@/backend/getTips";
 import { useEffect, useState } from "react";
 import TipCard from "./TipCard";
+import { Skeleton } from "@/components/ui/skeleton";
 
 // Define tip interface
 interface Tip {
@@ -60,7 +61,7 @@ const Tips = ({ creatorId }: { creatorId: string }) => {
   }, [loading, tips, creatorId]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Skeleton className="w-full h-9" />;
   }
 
   if (tips.length === 0) {

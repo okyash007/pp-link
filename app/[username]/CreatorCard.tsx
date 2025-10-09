@@ -1,20 +1,21 @@
 import Image from "next/image";
 
-const CreatorCard = () => {
+const CreatorCard = ({ creator }: { creator: any }) => {
+
   return (
     <div className="flex gap-4 items-center bg-secondary p-4 rounded-md">
       <div>
-        <Image
+        {creator.image.src && <Image
           className="rounded-full"
-          src="https://res.cloudinary.com/dspp405ug/image/upload/v1758616681/IMG_1592_fops9k.png"
+          src={creator.image.src}
           alt="creator-card"
           width={70}
           height={70}
-        />
+        />}
       </div>
       <div>
-        <h1>Creator Name</h1>
-        <p>Creator Description</p>
+        <h1 className="text-2xl font-bold">{creator.username}</h1>
+        <p className="text-sm text-gray-500">{creator.email}</p>
       </div>
     </div>
   );

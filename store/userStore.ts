@@ -7,6 +7,7 @@ interface UserState {
   amount: number;
   editable: boolean;
   currency: string;
+  errors: string[]
   setuser: (user: Partial<Omit<UserState, 'setuser'>>) => void;
 }
 
@@ -18,6 +19,8 @@ export const useUserStore = create<UserState>((set) => ({
   amount: 200,
   currency: "INR",
   editable: true,
+  errors: [],
+
 
   // Actions
   setuser: (user) => set({ ...user }),

@@ -69,9 +69,11 @@ const Tips = ({ creatorId }: { creatorId: string }) => {
 
   return (
     <div className="flex gap-4 overflow-y-auto">
-      {tips.map((tip) => (
-        <TipCard key={tip.id} tip={tip} />
-      ))}
+      {tips
+        .sort((a, b) => b.created_at - a.created_at)
+        .map((tip) => (
+          <TipCard key={tip.id} tip={tip} />
+        ))}
     </div>
   );
 };

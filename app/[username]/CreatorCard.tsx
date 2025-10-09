@@ -10,8 +10,6 @@ interface Creator {
 
 const CreatorCard = ({ creator }: { creator: Creator }) => {
 
-  console.log(creator);
-
   return (
     <div className="flex gap-4 items-center bg-secondary p-4 rounded-md">
       <div>

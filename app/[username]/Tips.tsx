@@ -1,3 +1,5 @@
+"use client";
+
 import { getTips } from "@/backend/getTips";
 import { useEffect, useState } from "react";
 import TipCard from "./TipCard";

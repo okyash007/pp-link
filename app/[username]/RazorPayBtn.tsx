@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useFpStore } from "@/store/fpStore";
 import { useUserStore } from "@/store/userStore";
+import { recordClickEvent } from "@/backend/recordEvent";
 
 const RazorPayBtn = ({
   creatorId,
@@ -19,29 +20,35 @@ const RazorPayBtn = ({
 
   const handlePayment = () => {
     // Validate required fields
+
+    recordClickEvent(fp, {
+      amount: user.amount * 100,
+      currency: user.currency,
+    });
+
     const errors = [];
-    
+
     if (!user.name || user.name.trim() === "") {
       errors.push("Name is required");
     }
-    
+
     if (!user.email || user.email.trim() === "") {
       errors.push("Email is required");
     }
-    
+
     if (!user.phone || user.phone.trim() === "") {
       errors.push("Phone number is required");
     }
-    
+
     // If there are validation errors, set them and return
     if (errors.length > 0) {
       user.setuser({ errors });
       return;
     }
-    
+
     // Clear any existing errors if validation passes
     user.setuser({ errors: [] });
-    
+
     if (typeof window !== "undefined" && window.Razorpay) {
       const options = {
         key: "rzp_test_ROkpHVGz3WZNo5", // Enter the Key ID generated from the Dashboard
@@ -73,8 +80,8 @@ const RazorPayBtn = ({
     }
   };
 
-  if(!fp){
-    return <Skeleton className="w-full h-9" />
+  if (!fp) {
+    return <Skeleton className="w-full h-9" />;
   }
 
   return (

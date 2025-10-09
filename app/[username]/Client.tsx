@@ -6,6 +6,7 @@ import Tips from "./Tips";
 import RazorPayBtn from "./RazorPayBtn";
 import { useFpStore } from "@/store/fpStore";
 import UserForm from "./UserForm";
+import { recordPageView } from "@/backend/recordEvent";
 
 const Client = ({ creatorId }: { creatorId: string }) => {
   const { setFp } = useFpStore();
@@ -15,6 +16,7 @@ const Client = ({ creatorId }: { creatorId: string }) => {
     (async () => {
       const hfp = await getVisitorId();
       setFp(hfp || "");
+      recordPageView(hfp || "");
     })();
   }, [setFp]);
 

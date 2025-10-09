@@ -1,6 +1,16 @@
 import Image from "next/image";
 
-const CreatorCard = ({ creator }: { creator: any }) => {
+interface Creator {
+  image: {
+    src: string;
+  };
+  username: string;
+  email: string;
+}
+
+const CreatorCard = ({ creator }: { creator: Creator }) => {
+
+  console.log(creator);
 
   return (
     <div className="flex gap-4 items-center bg-secondary p-4 rounded-md">

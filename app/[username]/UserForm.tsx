@@ -40,7 +40,7 @@ const UserForm = ({
         setLoading(false);
       })();
     }
-  }, [fp]);
+  }, [fp, user]);
 
   if (loading) {
     return (

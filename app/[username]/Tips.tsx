@@ -26,7 +26,7 @@ const getLatestCreatedAt = (tips: Tip[]): number | null => {
   return sortedTips[0].created_at;
 };
 
-const Tips = ({ creatorId }: { creatorId: string }) => {
+const Tips = ({ creatorId, block }: { creatorId: string; block: any }) => {
   const [tips, setTips] = useState<Tip[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -63,7 +63,18 @@ const Tips = ({ creatorId }: { creatorId: string }) => {
   }, [loading, tips, creatorId]);
 
   if (loading) {
-    return <Skeleton className="w-full h-9" />;
+    return (
+      <div className={`${block.className}`}>
+        <Skeleton className={`w-6xl h-12`} />
+        <Skeleton className={`w-6xl h-12`} />
+        <Skeleton className={`w-6xl h-12`} />
+        <Skeleton className={`w-6xl h-12`} />
+        <Skeleton className={`w-6xl h-12`} />
+        <Skeleton className={`w-6xl h-12`} />
+        <Skeleton className={`w-6xl h-12`} />
+        <Skeleton className={`w-6xl h-12`} />
+      </div>
+    );
   }
 
   if (tips.length === 0) {
@@ -71,11 +82,11 @@ const Tips = ({ creatorId }: { creatorId: string }) => {
   }
 
   return (
-    <div className="flex gap-4 overflow-y-auto">
+    <div className={`${block.className}`}>
       {tips
         .sort((a, b) => b.created_at - a.created_at)
         .map((tip) => (
-          <TipCard key={tip.id} tip={tip} />
+          <TipCard key={tip.id} tip={tip} block={block} />
         ))}
     </div>
   );

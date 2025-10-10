@@ -1,6 +1,5 @@
 import axios from "axios";
-import Client from "./Client";
-import CreatorCard from "./CreatorCard";
+import Blocks from "./Blocks";
 
 const getCreator = async (username: string) => {
   try {
@@ -23,11 +22,8 @@ const page = async ({ params }: { params: Promise<{ username: string }> }) => {
   }
 
   return (
-    <div className="max-w-2xl mx-auto p-4">
-      <CreatorCard creator={creator} />
-      <div className="my-4">
-        <Client creatorId={creator.creator_id} />
-      </div>
+    <div className="max-w-2xl mx-auto">
+      <Blocks blocks={creator.config.blocks} data={creator} />
     </div>
   );
 };

@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useFpStore } from "@/store/fpStore";
@@ -9,11 +11,13 @@ const RazorPayBtn = ({
   creatorName,
   color,
   message,
+  block,
 }: {
   creatorId: string;
   creatorName: string;
   color: string;
   message: string;
+  block: any;
 }) => {
   const { fp } = useFpStore();
   const user = useUserStore();
@@ -81,16 +85,22 @@ const RazorPayBtn = ({
   };
 
   if (!fp) {
-    return <Skeleton className="w-full h-9" />;
+    return (
+      <div className={block.className}>
+        <Skeleton className={"w-full h-9"} />
+      </div>
+    );
   }
 
   return (
-    <Button
-      className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
-      onClick={handlePayment}
-    >
-      Pay with Razorpay
-    </Button>
+    <div className={block.className}>
+      <Button
+        className={block.button.className}
+        onClick={handlePayment}
+      >
+        Pay with Razorpay
+      </Button>
+    </div>
   );
 };
 

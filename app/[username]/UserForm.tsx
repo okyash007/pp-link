@@ -1,3 +1,5 @@
+"use client";
+
 import { getUserByFp } from "@/backend/getUser";
 import { ButtonGroup } from "@/components/ui/button-group";
 import { Input } from "@/components/ui/input";
@@ -16,9 +18,11 @@ import { Skeleton } from "@/components/ui/skeleton";
 const UserForm = ({
   message,
   setMessage,
+  block,
 }: {
   message: string;
   setMessage: (message: string) => void;
+  block: any;
 }) => {
   const user = useUserStore();
   const { fp } = useFpStore();
@@ -44,7 +48,7 @@ const UserForm = ({
 
   if (loading) {
     return (
-      <div className="space-y-4">
+      <div className={block.className}>
         <Skeleton className="w-full h-9" />
         <Skeleton className="w-full h-9" />
         <Skeleton className="w-full h-9" />
@@ -55,7 +59,7 @@ const UserForm = ({
   }
 
   return (
-    <div className="space-y-4">
+    <div className={block.className}>
       <div>
         {/* <Label htmlFor="name">Name</Label> */}
         <Input
@@ -71,10 +75,10 @@ const UserForm = ({
             }
           }}
           disabled={!user.editable}
-          className={user.errors.some(error => error.includes("Name")) ? "border-red-500" : ""}
+          className={ block.input.className + (user.errors.some(error => error.includes("Name")) ? "border-red-500" : "")}
         />
         {user.errors.some(error => error.includes("Name")) && (
-          <p className="text-xs font-medium text-red-500">Name is required</p>
+          <p className="text-xs mt-1 font-semibold text-red-500">Name is required</p>
         )}
       </div>
 
@@ -93,10 +97,10 @@ const UserForm = ({
             }
           }}
           disabled={!user.editable}
-          className={user.errors.some(error => error.includes("Email")) ? "border-red-500" : ""}
+          className={ block.input.className + (user.errors.some(error => error.includes("Email")) ? "border-red-500" : "")}
         />
         {user.errors.some(error => error.includes("Email")) && (
-          <p className="text-xs font-medium text-red-500">Email is required</p>
+          <p className="text-xs mt-1 font-semibold text-red-500">Email is required</p>
         )}
       </div>
 
@@ -115,23 +119,24 @@ const UserForm = ({
             }
           }}
           disabled={!user.editable}
-          className={user.errors.some(error => error.includes("Phone")) ? "border-red-500" : ""}
+          className={ block.input.className + (user.errors.some(error => error.includes("Phone")) ? "border-red-500" : "")}
         />
         {user.errors.some(error => error.includes("Phone")) && (
-          <p className="text-xs font-medium text-red-500">Phone number is required</p>
+          <p className="text-xs mt-1 font-semibold text-red-500">Phone number is required</p>
         )}
       </div>
 
       <div className="space-y-2">
         {/* <Label htmlFor="amount">Amount & Currency</Label> */}
-        <ButtonGroup>
+        <ButtonGroup >
           <Select
+            
             value={user.currency}
             onValueChange={(value) =>
               user.setuser({ ...user, currency: value })
             }
           >
-            <SelectTrigger className="font-mono w-20">
+            <SelectTrigger className={block.input.className + " font-mono w-20"}>
               {user.currency === "INR"
                 ? "₹"
                 : user.currency === "USD"
@@ -142,7 +147,7 @@ const UserForm = ({
                 ? "£"
                 : user.currency}
             </SelectTrigger>
-            <SelectContent className="min-w-24">
+            <SelectContent className={block.input.className + " min-w-24"}>
               <SelectItem value="INR">₹ INR</SelectItem>
               <SelectItem value="USD">$ USD</SelectItem>
               <SelectItem value="EUR">€ EUR</SelectItem>
@@ -150,18 +155,20 @@ const UserForm = ({
             </SelectContent>
           </Select>
           <Input
+            className={block.input.className + " border-l-0 rounded-l-none w-full"}
             placeholder="200"
             pattern="[0-9]*"
             value={user.amount || ""}
             onChange={(e) =>
               user.setuser({ ...user, amount: Number(e.target.value) || 0 })
             }
-            className="border-l-0 rounded-l-none w-full"
+            // className="border-l-0 rounded-l-none w-full"
           />
         </ButtonGroup>
       </div>
       <div className="space-y-2">
         <Textarea
+          className={block.input.className}
           placeholder="Enter your message"
           value={message}
           onChange={(e) => {

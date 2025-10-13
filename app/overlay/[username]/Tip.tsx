@@ -30,11 +30,10 @@ const Tip = ({ tip }: { tip: any }) => {
   };
 
   return (
-    <div className="tip-card-wrapper">
-      <div
-        key={tip.id}
-        className="tip-card"
-      >
+    <div
+      key={tip.id}
+      className="bg-white rounded-lg shadow-md p-4 border-l-4 border-green-500"
+    >
         <div className="flex justify-between items-start mb-2">
           <h3 className="font-semibold text-gray-800">{tip.visitor_name}</h3>
           <div className="flex items-center gap-2">
@@ -64,7 +63,6 @@ const Tip = ({ tip }: { tip: any }) => {
         <div className="mt-2 text-xs text-gray-400">
           Payment ID: {tip.payment_id}
         </div>
-      </div>
     </div>
   );
 };

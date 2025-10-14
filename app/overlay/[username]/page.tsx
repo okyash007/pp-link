@@ -20,7 +20,7 @@ const page = async ({ params }: { params: Promise<{ username: string }> }) => {
   if (!creator) {
     return <div>Creator not found</div>;
   }
-  return <Client creatorId={creator.creator_id} />;
+  return <Client creatorId={creator.creator_id} config={creator.config} />;
 };
 
 export default page;

@@ -33,7 +33,7 @@ const getLatestCreatedAt = (tips: Tip[]): number | null => {
   return parseInt(sortedTips[0].created_at);
 };
 
-const Client = ({ creatorId }: { creatorId: string }) => {
+const Client = ({ creatorId, config }: { creatorId: string; config: any }) => {
   const [tips, setTips] = useState<Tip[]>([]);
   const [loading, setLoading] = useState(true);
   const currentTime = Math.floor(Date.now() / 1000);
@@ -58,7 +58,10 @@ const Client = ({ creatorId }: { creatorId: string }) => {
 
     const fetchNewTips = async () => {
       const latestCreatedAt = getLatestCreatedAt(tips);
-      const newTips = await getTips(creatorId, latestCreatedAt ? latestCreatedAt.toString() : currentTime.toString());
+      const newTips = await getTips(
+        creatorId,
+        latestCreatedAt ? latestCreatedAt.toString() : currentTime.toString()
+      );
       if (newTips && newTips.length > 0) {
         setTips((prevTips) => [...prevTips, ...newTips]);
       }
@@ -81,7 +84,7 @@ const Client = ({ creatorId }: { creatorId: string }) => {
         newTips.shift(); // Remove the first tip from the array
         return newTips;
       });
-    }, 10000); // 10 seconds
+    }, config.overlay.display_time);
 
     return () => clearTimeout(timer);
   }, [tips.length]);
@@ -98,9 +101,9 @@ const Client = ({ creatorId }: { creatorId: string }) => {
 
   return (
     <div className="min-h-screen p-4">
-      <div className="space-y-4">
-          {currentTip && <Tip key={currentTip.id} tip={currentTip} />}
-      </div>
+      {currentTip && (
+        <Tip overlay={config.overlay} key={currentTip.id} tip={currentTip} />
+      )}
     </div>
   );
 };

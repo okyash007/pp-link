@@ -1,5 +1,6 @@
-const Tip = ({ tip }: { tip: any }) => {
+import LiquidRenderer from "@/our/LiquidRenderer";
 
+const Tip = ({ tip, overlay }: { tip: any; overlay: any }) => {
   // Function to format amount
   const formatAmount = (amount: string, currency: string) => {
     const numericAmount = parseFloat(amount) / 100; // Convert from paise to rupees
@@ -30,40 +31,12 @@ const Tip = ({ tip }: { tip: any }) => {
   };
 
   return (
-    <div
+    <LiquidRenderer
       key={tip.id}
-      className="bg-white rounded-lg shadow-md p-4 border-l-4 border-green-500"
-    >
-        <div className="flex justify-between items-start mb-2">
-          <h3 className="font-semibold text-gray-800">{tip.visitor_name}</h3>
-          <div className="flex items-center gap-2">
-            <span className="text-lg font-bold text-green-600">
-              {formatAmount(tip.amount, tip.currency)}
-            </span>
-            <button
-              className="close-btn"
-              aria-label="Close tip"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        {tip.message && (
-          <p className="text-gray-600 mb-2 italic">"{tip.message}"</p>
-        )}
-
-        <div className="flex justify-between items-center text-sm text-gray-500">
-          <span>{formatDate(tip.created_at)}</span>
-          <span>{formatTime(tip.created_at)}</span>
-        </div>
-
-        <div className="mt-2 text-xs text-gray-400">
-          Payment ID: {tip.payment_id}
-        </div>
-    </div>
+      className={overlay.className}
+      html={overlay.template}
+      data={{ ...tip, data: overlay.data }}
+    />
   );
 };
 

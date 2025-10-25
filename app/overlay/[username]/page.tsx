@@ -4,7 +4,7 @@ import Client from "./Client";
 const getCreator = async (username: string) => {
   try {
     const creator = await axios.get(
-      `${process.env.API_URL}/creator/${username}`
+      `${process.env.API_URL}/creator/${username}/overlay`
     );
     return creator.data.data;
   } catch (error) {
@@ -20,7 +20,7 @@ const page = async ({ params }: { params: Promise<{ username: string }> }) => {
   if (!creator) {
     return <div>Creator not found</div>;
   }
-  return <Client creatorId={creator.creator_id} config={creator.config} />;
+  return <Client creator={creator} blocks={creator.overlay.blocks} />;
 };
 
 export default page;

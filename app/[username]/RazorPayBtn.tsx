@@ -96,9 +96,10 @@ const RazorPayBtn = ({
     <div className={block.className}>
       <Button
         className={block.button.className}
+        style={block.button.style}
         onClick={handlePayment}
       >
-        Pay with Razorpay
+        {block.button.text || "Pay with Razorpay"}
       </Button>
     </div>
   );

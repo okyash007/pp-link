@@ -65,19 +65,19 @@ const TipCard = ({ tip, block }: { tip: Tip; block: any }) => {
     <div className="group relative">
       <Popover>
         <PopoverTrigger asChild>
-          <Button className={block.tip_btn.className}>
+          <Button className={block.tip_btn.className} style={block.tip_btn.style}>
             <LiquidRenderer
               className={""}
               html={block.tip_btn.template}
-              data={tip}
+              data={{...tip, data: block.tip_btn?.data || {}}}
             />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className={block.tip_card.className}>
+        <PopoverContent className={block.tip_card.className} style={block.tip_card.style}>
           <LiquidRenderer
             className={""}
             html={block.tip_card.template}
-            data={tip}
+            data={{...tip, data: block.tip_card?.data || {}}}
           />
         </PopoverContent>
       </Popover>

@@ -23,7 +23,7 @@ const page = async ({ params }: { params: Promise<{ username: string }> }) => {
 
   return (
     <div className="max-w-2xl mx-auto">
-      <Blocks blocks={creator.config.blocks} data={creator} />
+      <Blocks blocks={creator.tipPage.blocks} data={creator} />
     </div>
   );
 };

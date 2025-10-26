@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { Liquid } from "liquidjs";
 
-const LiquidRenderer = ({ html, data, className, style = {} }: { html: string; data: any; className: string; style: any }) => {
+const LiquidRenderer = ({ html, data, className, style = {} }: { html: string; data: any; className: string; style?: any }) => {
 
 
   const renderedHtml = useMemo(() => {

@@ -55,7 +55,7 @@ const RazorPayBtn = ({
 
     if (typeof window !== "undefined" && window.Razorpay) {
       const options = {
-        key: "rzp_test_ROkpHVGz3WZNo5", // Enter the Key ID generated from the Dashboard
+        key: "rzp_test_RZQA8D3pHvPbFd", // Enter the Key ID generated from the Dashboard
         amount: user.amount * 100, // Amount is in currency subunits.
         currency: user.currency,
         name: creatorName, //your business name

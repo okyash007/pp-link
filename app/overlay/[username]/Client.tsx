@@ -13,7 +13,7 @@ const Client = ({ creator, blocks }: { creator: any; blocks: any[] }) => {
   const block = blocks.find((block) => block.type === blockType);
 
   if (!block) {
-    return <div>Block not found</div>;
+    return <></>;
   }
 
   if (block.type === "tip") {

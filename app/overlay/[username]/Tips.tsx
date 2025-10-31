@@ -81,12 +81,14 @@ const Tips = ({ creator, tipBlock }: { creator: any; tipBlock: any }) => {
         newTips.shift(); // Remove the first tip from the array
         return newTips;
       });
-    }, tipBlock.display_time);
+    }, tipBlock.display_time ? tipBlock.display_time : 20000);
 
     return () => clearTimeout(timer);
   }, [tips.length]);
 
   const currentTip = tips[0];
+
+  console.log(tips);
 
   if (loading) {
     return <></>;
@@ -95,6 +97,8 @@ const Tips = ({ creator, tipBlock }: { creator: any; tipBlock: any }) => {
   if (tips.length === 0) {
     return <></>;
   }
+
+
 
   return <Tip overlay={tipBlock} key={currentTip.id} tip={currentTip} />;
 };

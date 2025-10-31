@@ -12,8 +12,6 @@ const Client = ({ creator, blocks }: { creator: any; blocks: any[] }) => {
 
   const block = blocks.find((block) => block.type === blockType);
 
-  console.log(block);
-
   if (!block) {
     return <div>Block not found</div>;
   }

@@ -88,8 +88,6 @@ const Tips = ({ creator, tipBlock }: { creator: any; tipBlock: any }) => {
 
   const currentTip = tips[0];
 
-  console.log(tips);
-
   if (loading) {
     return <></>;
   }

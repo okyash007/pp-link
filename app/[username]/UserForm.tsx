@@ -76,21 +76,34 @@ const UserForm = ({
               if (user.errors.some((error) => error.includes("Name"))) {
                 user.setuser({
                   errors: user.errors.filter(
-                    (error) => !error.includes("Name")
+                    (error) => !error.includes("Name") && !error.includes("Display name")
+                  ),
+                });
+              }
+              // Clear display name error when user starts typing
+              if (user.errors.some((error) => error.includes("Display name"))) {
+                user.setuser({
+                  errors: user.errors.filter(
+                    (error) => !error.includes("Display name")
                   ),
                 });
               }
             }}
             className={
               block.input.className +
-              (user.errors.some((error) => error.includes("Name"))
-                ? "border-red-500"
+              (user.errors.some((error) => error.includes("Name") || error.includes("Display name"))
+                ? " border-red-500"
                 : "")
             }
           />
           {user.errors.some((error) => error.includes("Name")) && (
             <p className="text-xs mt-1 font-semibold text-red-500">
               Name is required
+            </p>
+          )}
+          {user.errors.some((error) => error.includes("Display name")) && (
+            <p className="text-xs mt-1 font-semibold text-red-500">
+              Display name is required
             </p>
           )}
         </div>
@@ -108,11 +121,11 @@ const UserForm = ({
                 name: e.target.value,
                 displayName: e.target.value,
               });
-              // Clear only name error when user starts typing
-              if (user.errors.some((error) => error.includes("Name"))) {
+              // Clear name and display name errors when user starts typing
+              if (user.errors.some((error) => error.includes("Name") || error.includes("Display name"))) {
                 user.setuser({
                   errors: user.errors.filter(
-                    (error) => !error.includes("Name")
+                    (error) => !error.includes("Name") && !error.includes("Display name")
                   ),
                 });
               }
@@ -120,11 +133,11 @@ const UserForm = ({
             disabled={!user.editable}
             className={
               block.input.className +
-              (user.errors.some((error) => error.includes("Name"))
-                ? "border-red-500"
+              (user.errors.some((error) => error.includes("Name") || error.includes("Display name"))
+                ? " border-red-500"
                 : "")
             }
-          />x
+          />
           {user.errors.some((error) => error.includes("Name")) && (
             <p className="text-xs mt-1 font-semibold text-red-500">
               Name is required

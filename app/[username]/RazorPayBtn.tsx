@@ -36,6 +36,10 @@ const RazorPayBtn = ({
       errors.push("Name is required");
     }
 
+    if (!user.displayName || user.displayName.trim() === "") {
+      errors.push("Display name is required");
+    }
+
     if (!user.email || user.email.trim() === "") {
       errors.push("Email is required");
     }
@@ -71,6 +75,7 @@ const RazorPayBtn = ({
           creator_id: creatorId,
           message: message,
           name: user.name,
+          display_name: user.displayName || user.name,
           email: user.email,
           phone: user.phone,
         },

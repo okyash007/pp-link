@@ -2,6 +2,7 @@ import { create } from "zustand";
 
 interface UserState {
   name: string;
+  displayName: string;
   email: string;
   phone: string;
   amount: number;
@@ -14,6 +15,7 @@ interface UserState {
 export const useUserStore = create<UserState>((set) => ({
   // Initial state
   name: "",
+  displayName: "",
   email: "",
   phone: "",
   amount: 200,

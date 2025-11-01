@@ -36,6 +36,7 @@ const UserForm = ({
           user.setuser({
             ...user,
             name: userData.name,
+            displayName: userData.name,
             email: userData.email,
             phone: userData.phone,
             editable: false,
@@ -60,27 +61,77 @@ const UserForm = ({
 
   return (
     <div className={block.className}>
-      <div>
-        {/* <Label htmlFor="name">Name</Label> */}
-        <Input
-          id="name"
-          type="text"
-          placeholder="Enter your name"
-          value={user.name}
-          onChange={(e) => {
-            user.setuser({ ...user, name: e.target.value });
-            // Clear only name error when user starts typing
-            if (user.errors.some(error => error.includes("Name"))) {
-              user.setuser({ errors: user.errors.filter(error => !error.includes("Name")) });
+      {user.name ? (
+        <div>
+          {/* <Label htmlFor="name">Name</Label> */}
+          <Input
+            id="name"
+            type="text"
+            placeholder="Enter your name"
+            value={user.displayName}
+            onChange={(e) => {
+              // user.setuser({ ...user, name: e.target.value });
+              user.setuser({ ...user, displayName: e.target.value });
+              // Clear only name error when user starts typing
+              if (user.errors.some((error) => error.includes("Name"))) {
+                user.setuser({
+                  errors: user.errors.filter(
+                    (error) => !error.includes("Name")
+                  ),
+                });
+              }
+            }}
+            className={
+              block.input.className +
+              (user.errors.some((error) => error.includes("Name"))
+                ? "border-red-500"
+                : "")
             }
-          }}
-          disabled={!user.editable}
-          className={ block.input.className + (user.errors.some(error => error.includes("Name")) ? "border-red-500" : "")}
-        />
-        {user.errors.some(error => error.includes("Name")) && (
-          <p className="text-xs mt-1 font-semibold text-red-500">Name is required</p>
-        )}
-      </div>
+          />
+          {user.errors.some((error) => error.includes("Name")) && (
+            <p className="text-xs mt-1 font-semibold text-red-500">
+              Name is required
+            </p>
+          )}
+        </div>
+      ) : (
+        <div>
+          {/* <Label htmlFor="name">Name</Label> */}
+          <Input
+            id="name"
+            type="text"
+            placeholder="Enter your name"
+            value={user.name}
+            onChange={(e) => {
+              user.setuser({
+                ...user,
+                name: e.target.value,
+                displayName: e.target.value,
+              });
+              // Clear only name error when user starts typing
+              if (user.errors.some((error) => error.includes("Name"))) {
+                user.setuser({
+                  errors: user.errors.filter(
+                    (error) => !error.includes("Name")
+                  ),
+                });
+              }
+            }}
+            disabled={!user.editable}
+            className={
+              block.input.className +
+              (user.errors.some((error) => error.includes("Name"))
+                ? "border-red-500"
+                : "")
+            }
+          />x
+          {user.errors.some((error) => error.includes("Name")) && (
+            <p className="text-xs mt-1 font-semibold text-red-500">
+              Name is required
+            </p>
+          )}
+        </div>
+      )}
 
       <div>
         {/* <Label htmlFor="email">Email</Label> */}
@@ -92,15 +143,24 @@ const UserForm = ({
           onChange={(e) => {
             user.setuser({ ...user, email: e.target.value });
             // Clear only email error when user starts typing
-            if (user.errors.some(error => error.includes("Email"))) {
-              user.setuser({ errors: user.errors.filter(error => !error.includes("Email")) });
+            if (user.errors.some((error) => error.includes("Email"))) {
+              user.setuser({
+                errors: user.errors.filter((error) => !error.includes("Email")),
+              });
             }
           }}
           disabled={!user.editable}
-          className={ block.input.className + (user.errors.some(error => error.includes("Email")) ? "border-red-500" : "")}
+          className={
+            block.input.className +
+            (user.errors.some((error) => error.includes("Email"))
+              ? "border-red-500"
+              : "")
+          }
         />
-        {user.errors.some(error => error.includes("Email")) && (
-          <p className="text-xs mt-1 font-semibold text-red-500">Email is required</p>
+        {user.errors.some((error) => error.includes("Email")) && (
+          <p className="text-xs mt-1 font-semibold text-red-500">
+            Email is required
+          </p>
         )}
       </div>
 
@@ -114,29 +174,39 @@ const UserForm = ({
           onChange={(e) => {
             user.setuser({ ...user, phone: e.target.value });
             // Clear only phone error when user starts typing
-            if (user.errors.some(error => error.includes("Phone"))) {
-              user.setuser({ errors: user.errors.filter(error => !error.includes("Phone")) });
+            if (user.errors.some((error) => error.includes("Phone"))) {
+              user.setuser({
+                errors: user.errors.filter((error) => !error.includes("Phone")),
+              });
             }
           }}
           disabled={!user.editable}
-          className={ block.input.className + (user.errors.some(error => error.includes("Phone")) ? "border-red-500" : "")}
+          className={
+            block.input.className +
+            (user.errors.some((error) => error.includes("Phone"))
+              ? "border-red-500"
+              : "")
+          }
         />
-        {user.errors.some(error => error.includes("Phone")) && (
-          <p className="text-xs mt-1 font-semibold text-red-500">Phone number is required</p>
+        {user.errors.some((error) => error.includes("Phone")) && (
+          <p className="text-xs mt-1 font-semibold text-red-500">
+            Phone number is required
+          </p>
         )}
       </div>
 
       <div className="space-y-2">
         {/* <Label htmlFor="amount">Amount & Currency</Label> */}
-        <ButtonGroup >
+        <ButtonGroup>
           <Select
-            
             value={user.currency}
             onValueChange={(value) =>
               user.setuser({ ...user, currency: value })
             }
           >
-            <SelectTrigger className={block.input.className + " font-mono w-20"}>
+            <SelectTrigger
+              className={block.input.className + " font-mono w-20"}
+            >
               {user.currency === "INR"
                 ? "₹"
                 : user.currency === "USD"
@@ -155,7 +225,9 @@ const UserForm = ({
             </SelectContent>
           </Select>
           <Input
-            className={block.input.className + " border-l-0 rounded-l-none w-full"}
+            className={
+              block.input.className + " border-l-0 rounded-l-none w-full"
+            }
             placeholder="200"
             pattern="[0-9]*"
             value={user.amount || ""}

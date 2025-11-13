@@ -166,7 +166,7 @@ const UserForm = ({
           className={
             block.input.className +
             (user.errors.some((error) => error.includes("Email"))
-              ? "border-red-500"
+              ? " border-red-500"
               : "")
           }
         />
@@ -197,7 +197,7 @@ const UserForm = ({
           className={
             block.input.className +
             (user.errors.some((error) => error.includes("Phone"))
-              ? "border-red-500"
+              ? " border-red-500"
               : "")
           }
         />
@@ -208,7 +208,7 @@ const UserForm = ({
         )}
       </div>
 
-      <div className="space-y-2">
+      <div>
         {/* <Label htmlFor="amount">Amount & Currency</Label> */}
         <ButtonGroup>
           <Select
@@ -218,7 +218,7 @@ const UserForm = ({
             }
           >
             <SelectTrigger
-              className={block.input.className + " font-mono w-20"}
+              className={block.input.className + " font-mono w-20 h-9 py-1"}
             >
               {user.currency === "INR"
                 ? "₹"
@@ -230,16 +230,16 @@ const UserForm = ({
                 ? "£"
                 : user.currency}
             </SelectTrigger>
-            <SelectContent className={block.input.className + " min-w-24"}>
-              <SelectItem value="INR">₹ INR</SelectItem>
-              <SelectItem value="USD">$ USD</SelectItem>
-              <SelectItem value="EUR">€ EUR</SelectItem>
-              <SelectItem value="GBP">£ GBP</SelectItem>
+            <SelectContent className="min-w-24 border-[3px] border-black bg-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+              <SelectItem value="INR" className="font-semibold">₹ INR</SelectItem>
+              <SelectItem value="USD" className="font-semibold">$ USD</SelectItem>
+              <SelectItem value="EUR" className="font-semibold">€ EUR</SelectItem>
+              <SelectItem value="GBP" className="font-semibold">£ GBP</SelectItem>
             </SelectContent>
           </Select>
           <Input
             className={
-              block.input.className + " border-l-0 rounded-l-none w-full"
+              block.input.className + " border-l-0 rounded-l-none w-full h-9"
             }
             placeholder="200"
             pattern="[0-9]*"
@@ -251,7 +251,7 @@ const UserForm = ({
           />
         </ButtonGroup>
       </div>
-      <div className="space-y-2">
+      <div>
         <Textarea
           className={block.input.className}
           placeholder="Enter your message"

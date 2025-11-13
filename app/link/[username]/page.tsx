@@ -1,17 +1,28 @@
-import axios from "axios";
 import Client from "./Client";
 
 const getCreator = async (username: string) => {
-    try {
-      const creator = await axios.get(
-        `${process.env.API_URL}/creator/${username}/linktree`
-      );
-      return creator.data.data;
-    } catch (error) {
-      console.error(error);
+  try {
+    const response = await fetch(
+      `${process.env.API_URL}/creator/${username}/linktree`,
+      {
+        cache: "no-store",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if (!response.ok) {
       return null;
     }
-  };
+
+    const result = await response.json();
+    return result.data;
+  } catch (error) {
+    console.error("Error fetching creator:", error);
+    return null;
+  }
+};
 
 const page = async ({ params }: { params: Promise<{ username: string }> }) => {
   const { username } = await params;
@@ -21,9 +32,9 @@ const page = async ({ params }: { params: Promise<{ username: string }> }) => {
   }
   return (
     <Client creator={creator} blocks={creator.linkTree?.blocks || []} />
-  )
-}
+  );
+};
 
-export default page
+export default page;
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";

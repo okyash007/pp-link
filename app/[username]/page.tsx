@@ -1,14 +1,26 @@
-import axios from "axios";
 import Blocks from "./Blocks";
+import { Suspense } from "react";
 
 const getCreator = async (username: string) => {
   try {
-    const creator = await axios.get(
-      `${process.env.API_URL}/creator/${username}`
+    const response = await fetch(
+      `${process.env.API_URL}/creator/${username}`,
+      {
+        cache: "no-store", // Force dynamic rendering
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
     );
-    return creator.data.data;
+
+    if (!response.ok) {
+      return null;
+    }
+
+    const result = await response.json();
+    return result.data;
   } catch (error) {
-    console.error(error);
+    console.error("Error fetching creator:", error);
     return null;
   }
 };
@@ -23,11 +35,13 @@ const page = async ({ params }: { params: Promise<{ username: string }> }) => {
 
   return (
     <div className="max-w-2xl mx-auto">
-      <Blocks blocks={creator.tipPage.blocks} data={creator} />
+      <Suspense fallback={<div className="animate-pulse">Loading...</div>}>
+        <Blocks blocks={creator.tipPage.blocks} data={creator} />
+      </Suspense>
     </div>
   );
 };
 
 export default page;
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";

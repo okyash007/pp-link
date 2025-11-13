@@ -12,12 +12,26 @@ import RazorPayBtn from "./RazorPayBtn";
 const Blocks = ({ blocks, data }: { blocks: any[]; data: any }) => {
   const [message, setMessage] = useState<string>("");
   const { setFp } = useFpStore();
+  
+  // Defer non-critical operations to not block initial render
   useEffect(() => {
-    (async () => {
+    // Use requestIdleCallback if available, otherwise setTimeout
+    const scheduleWork = (callback: () => void) => {
+      if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+        requestIdleCallback(callback, { timeout: 2000 });
+      } else {
+        setTimeout(callback, 0);
+      }
+    };
+
+    scheduleWork(async () => {
       const hfp = await getVisitorId();
       setFp(hfp || "");
-      recordPageView(hfp || "");
-    })();
+      // Fire and forget - don't block on analytics
+      recordPageView(hfp || "").catch(() => {
+        // Silently fail analytics
+      });
+    });
   }, [setFp]);
 
   return (

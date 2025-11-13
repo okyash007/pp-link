@@ -1,14 +1,25 @@
-import axios from "axios";
 import Client from "./Client";
 
 const getCreator = async (username: string) => {
   try {
-    const creator = await axios.get(
-      `${process.env.API_URL}/creator/${username}/overlay`
+    const response = await fetch(
+      `${process.env.API_URL}/creator/${username}/overlay`,
+      {
+        cache: "no-store",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
     );
-    return creator.data.data;
+
+    if (!response.ok) {
+      return null;
+    }
+
+    const result = await response.json();
+    return result.data;
   } catch (error) {
-    console.error(error);
+    console.error("Error fetching creator:", error);
     return null;
   }
 };
@@ -25,4 +36,4 @@ const page = async ({ params }: { params: Promise<{ username: string }> }) => {
 
 export default page;
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";

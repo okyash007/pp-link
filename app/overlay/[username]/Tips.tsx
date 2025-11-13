@@ -31,7 +31,6 @@ const getLatestCreatedAt = (tips: Tip[]): number | null => {
   return parseInt(sortedTips[0].created_at);
 };
 
-
 const Tips = ({ creator, tipBlock }: { creator: any; tipBlock: any }) => {
   const [tips, setTips] = useState<Tip[]>([]);
   const currentTime = Math.floor(Date.now() / 1000);
@@ -75,13 +74,16 @@ const Tips = ({ creator, tipBlock }: { creator: any; tipBlock: any }) => {
   useEffect(() => {
     if (tips.length === 0) return;
 
-    const timer = setTimeout(() => {
-      setTips((prevTips) => {
-        const newTips = [...prevTips];
-        newTips.shift(); // Remove the first tip from the array
-        return newTips;
-      });
-    }, tipBlock.display_time ? tipBlock.display_time : 20000);
+    const timer = setTimeout(
+      () => {
+        setTips((prevTips) => {
+          const newTips = [...prevTips];
+          newTips.shift(); // Remove the first tip from the array
+          return newTips;
+        });
+      },
+      tipBlock.display_time ? tipBlock.display_time : 20000
+    );
 
     return () => clearTimeout(timer);
   }, [tips.length]);
@@ -92,11 +94,26 @@ const Tips = ({ creator, tipBlock }: { creator: any; tipBlock: any }) => {
     return <></>;
   }
 
+  if (tipBlock.test) {
+    return (
+      <Tip
+        overlay={tipBlock}
+        key={"test"}
+        tip={{
+          id: "test",
+          visitor_id: "test",
+          creator_id: "test",
+          amount: 10000,
+          currency: "₹",
+          message: "lore ipsum dolor sit amet",
+        }}
+      />
+    );
+  }
+
   if (tips.length === 0) {
     return <></>;
   }
-
-
 
   return <Tip overlay={tipBlock} key={currentTip.id} tip={currentTip} />;
 };

@@ -4,7 +4,7 @@ import React from "react";
 
 const Client = ({ creator, blocks }: { creator: any; blocks: any[] }) => {
   return (
-    <div className="max-w-2xl mx-auto">
+    <div className="flex flex-col items-center justify-center h-screen w-[50%] mx-auto border border-red-600 ">
       {blocks.map((block) => {
         return (
           <LiquidRenderer

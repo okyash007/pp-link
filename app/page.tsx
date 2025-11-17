@@ -32,5 +32,18 @@ declare global {
 }
 
 export default function Home() {
-  return <></>;
+  const videoUrl = "https://www.youtube.com/embed/puMQDkceZZg?si=0xtrNUQy4MtFz7Jw&autoplay=1&mute=1&start=0&end=5&controls=0";
+
+  return (
+    <iframe
+      width="560"
+      height="315"
+      src={videoUrl}
+      title="YouTube video player"
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerPolicy="strict-origin-when-cross-origin"
+      allowFullScreen
+    ></iframe>
+  );
 }

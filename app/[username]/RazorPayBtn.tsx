@@ -11,12 +11,16 @@ const RazorPayBtn = ({
   creatorName,
   color,
   message,
+  type,
+  media,
   block,
 }: {
   creatorId: string;
   creatorName: string;
   color: string;
   message: string;
+  type: string;
+  media: string;
   block: any;
 }) => {
   const { fp } = useFpStore();
@@ -74,6 +78,8 @@ const RazorPayBtn = ({
           visitor_id: fp,
           creator_id: creatorId,
           message: message,
+          type: type,
+          media: media,
           name: user.name,
           display_name: user.displayName || user.name,
           email: user.email,

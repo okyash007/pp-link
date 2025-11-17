@@ -11,7 +11,10 @@ import RazorPayBtn from "./RazorPayBtn";
 
 const Blocks = ({ blocks, data }: { blocks: any[]; data: any }) => {
   const [message, setMessage] = useState<string>("");
+  const [media, setMedia] = useState<string>("");
+  const [type, setType] = useState<string>("notify");
   const { setFp } = useFpStore();
+
   
   // Defer non-critical operations to not block initial render
   useEffect(() => {
@@ -48,6 +51,10 @@ const Blocks = ({ blocks, data }: { blocks: any[]; data: any }) => {
               block={block}
               message={message}
               setMessage={setMessage}
+              media={media}
+              setMedia={setMedia}
+              type={type}
+              setType={setType}
               key={block.type}
             />
           );
@@ -60,6 +67,8 @@ const Blocks = ({ blocks, data }: { blocks: any[]; data: any }) => {
               creatorName={data.username}
               color={"#3399cc"}
               message={message}
+              type={type}
+              media={media}
               block={block}
               key={block.type}
             />

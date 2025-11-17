@@ -14,19 +14,52 @@ import { useUserStore } from "@/store/userStore";
 import { useEffect, useState } from "react";
 import { Textarea } from "@/components/ui/textarea";
 import { Skeleton } from "@/components/ui/skeleton";
+import { cn } from "@/lib/utils";
+
+const typeOptions = [
+  { value: "notify", label: "Notify" },
+  { value: "text-to-speech", label: "Text to speech" },
+  { value: "media-share", label: "Media share" },
+];
+
+const isValidYouTubeUrl = (url: string) => {
+  if (!url) return false;
+  try {
+    const parsed = new URL(url);
+    const host = parsed.hostname.replace(/^www\./, "");
+    if (host === "youtube.com") {
+      return parsed.pathname === "/watch" && parsed.searchParams.has("v");
+    }
+    if (host === "youtu.be") {
+      return parsed.pathname.length > 1;
+    }
+    return false;
+  } catch {
+    return false;
+  }
+};
 
 const UserForm = ({
   message,
   setMessage,
+  media,
+  setMedia,
+  type,
+  setType,
   block,
 }: {
   message: string;
   setMessage: (message: string) => void;
+  media: string;
+  setMedia: (media: string) => void;
+  type: string;
+  setType: (type: string) => void;
   block: any;
 }) => {
   const user = useUserStore();
   const { fp } = useFpStore();
   const [loading, setLoading] = useState(true);
+  const [mediaError, setMediaError] = useState("");
 
   useEffect(() => {
     if (fp) {
@@ -61,6 +94,27 @@ const UserForm = ({
 
   return (
     <div className={block.className}>
+      <div className="space-y-2">
+        <ButtonGroup className="w-full">
+          {typeOptions.map((option) => (
+            <button
+              key={option.value}
+              type="button"
+              className={cn(
+                block.input.className,
+                "flex-1 h-10 px-4 text-sm font-semibold transition-all duration-150 text-left",
+                "focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0",
+                type === option.value
+                  ? "bg-black text-white"
+                  : "bg-white text-black"
+              )}
+              onClick={() => setType(option.value)}
+            >
+              {option.label}
+            </button>
+          ))}
+        </ButtonGroup>
+      </div>
       {user.name ? (
         <div>
           {/* <Label htmlFor="name">Name</Label> */}
@@ -76,7 +130,8 @@ const UserForm = ({
               if (user.errors.some((error) => error.includes("Name"))) {
                 user.setuser({
                   errors: user.errors.filter(
-                    (error) => !error.includes("Name") && !error.includes("Display name")
+                    (error) =>
+                      !error.includes("Name") && !error.includes("Display name")
                   ),
                 });
               }
@@ -91,7 +146,10 @@ const UserForm = ({
             }}
             className={
               block.input.className +
-              (user.errors.some((error) => error.includes("Name") || error.includes("Display name"))
+              (user.errors.some(
+                (error) =>
+                  error.includes("Name") || error.includes("Display name")
+              )
                 ? " border-red-500"
                 : "")
             }
@@ -122,10 +180,16 @@ const UserForm = ({
                 displayName: e.target.value,
               });
               // Clear name and display name errors when user starts typing
-              if (user.errors.some((error) => error.includes("Name") || error.includes("Display name"))) {
+              if (
+                user.errors.some(
+                  (error) =>
+                    error.includes("Name") || error.includes("Display name")
+                )
+              ) {
                 user.setuser({
                   errors: user.errors.filter(
-                    (error) => !error.includes("Name") && !error.includes("Display name")
+                    (error) =>
+                      !error.includes("Name") && !error.includes("Display name")
                   ),
                 });
               }
@@ -133,7 +197,10 @@ const UserForm = ({
             disabled={!user.editable}
             className={
               block.input.className +
-              (user.errors.some((error) => error.includes("Name") || error.includes("Display name"))
+              (user.errors.some(
+                (error) =>
+                  error.includes("Name") || error.includes("Display name")
+              )
                 ? " border-red-500"
                 : "")
             }
@@ -231,10 +298,18 @@ const UserForm = ({
                 : user.currency}
             </SelectTrigger>
             <SelectContent className="min-w-24 border-[3px] border-black bg-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-              <SelectItem value="INR" className="font-semibold">₹ INR</SelectItem>
-              <SelectItem value="USD" className="font-semibold">$ USD</SelectItem>
-              <SelectItem value="EUR" className="font-semibold">€ EUR</SelectItem>
-              <SelectItem value="GBP" className="font-semibold">£ GBP</SelectItem>
+              <SelectItem value="INR" className="font-semibold">
+                ₹ INR
+              </SelectItem>
+              <SelectItem value="USD" className="font-semibold">
+                $ USD
+              </SelectItem>
+              <SelectItem value="EUR" className="font-semibold">
+                € EUR
+              </SelectItem>
+              <SelectItem value="GBP" className="font-semibold">
+                £ GBP
+              </SelectItem>
             </SelectContent>
           </Select>
           <Input
@@ -261,6 +336,31 @@ const UserForm = ({
           }}
         />
       </div>
+      {type === "media-share" && (
+        <div>
+          <Input
+            className={
+              block.input.className + (mediaError ? " border-red-500" : "")
+            }
+            placeholder="Enter your media link"
+            value={media}
+            onChange={(e) => {
+              const value = e.target.value;
+              setMedia(value);
+              if (!value || isValidYouTubeUrl(value)) {
+                setMediaError("");
+              } else {
+                setMediaError("Please enter a valid YouTube video URL");
+              }
+            }}
+          />
+          {mediaError && (
+            <p className="text-xs mt-1 font-semibold text-red-500">
+              {mediaError}
+            </p>
+          )}
+        </div>
+      )}
     </div>
   );
 };

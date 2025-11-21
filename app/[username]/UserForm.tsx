@@ -17,7 +17,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 
 const typeOptions = [
-  { value: "notify", label: "Notify" },
+  { value: "notify", label: "Alert" },
   { value: "text-to-speech", label: "Text to speech" },
   { value: "media-share", label: "Media share" },
 ];
@@ -102,10 +102,10 @@ const UserForm = ({
               type="button"
               className={cn(
                 block.input.className,
-                "flex-1 h-10 px-4 text-sm font-semibold transition-all duration-150 text-left",
+                "flex-1 h-9 sm:h-10 px-2 sm:px-3 md:px-4 text-xs sm:text-sm font-semibold transition-all duration-150 text-center",
                 "focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0",
                 type === option.value
-                  ? "bg-black text-white"
+                  ? "bg-yellow-200 text-black"
                   : "bg-white text-black"
               )}
               onClick={() => setType(option.value)}

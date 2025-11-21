@@ -1,5 +1,8 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
+import { runTextToSpeech } from "@/lib/runTextToSpeech";
+
 // Declare Razorpay types
 declare global {
   interface Window {
@@ -32,18 +35,26 @@ declare global {
 }
 
 export default function Home() {
-  const videoUrl = "https://www.youtube.com/embed/puMQDkceZZg?si=0xtrNUQy4MtFz7Jw&autoplay=1&mute=1&start=0&end=5&controls=0";
+  const handleTextToSpeech = async () => {
+    // Unlock audio context during user interaction
+    const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+    if (audioContext.state === "suspended") {
+      await audioContext.resume();
+    }
+    
+    await runTextToSpeech({
+      text: "hey yoo",
+      voice: "alloy",
+      creatorId: "test-creator-123",
+      instructions: "Speak naturally and clearly.",
+    });
+  };
 
   return (
-    <iframe
-      width="560"
-      height="315"
-      src={videoUrl}
-      title="YouTube video player"
-      frameBorder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerPolicy="strict-origin-when-cross-origin"
-      allowFullScreen
-    ></iframe>
+    <div className="flex items-center justify-center min-h-screen">
+      <Button onClick={handleTextToSpeech}>
+        Play Text to Speech
+      </Button>
+    </div>
   );
 }

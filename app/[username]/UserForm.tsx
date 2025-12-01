@@ -18,8 +18,8 @@ import { cn } from "@/lib/utils";
 
 const typeOptions = [
   { value: "notify", label: "Alert" },
-  { value: "text-to-speech", label: "Text to speech" },
-  { value: "media-share", label: "Media share" },
+  { value: "text-to-speech", label: "Text to speech", pro: true },
+  { value: "media-share", label: "Media share", pro: true },
 ];
 
 const isValidYouTubeUrl = (url: string) => {
@@ -47,6 +47,7 @@ const UserForm = ({
   type,
   setType,
   block,
+  subscriptionStatus,
 }: {
   message: string;
   setMessage: (message: string) => void;
@@ -55,11 +56,14 @@ const UserForm = ({
   type: string;
   setType: (type: string) => void;
   block: any;
+  subscriptionStatus?: string;
 }) => {
   const user = useUserStore();
   const { fp } = useFpStore();
   const [loading, setLoading] = useState(true);
   const [mediaError, setMediaError] = useState("");
+
+  const isPro = subscriptionStatus === "pro";
 
   useEffect(() => {
     if (fp) {
@@ -80,6 +84,14 @@ const UserForm = ({
     }
   }, [fp]);
 
+  // Reset type to "notify" if current type requires pro and user doesn't have pro
+  useEffect(() => {
+    const currentOption = typeOptions.find((opt) => opt.value === type);
+    if (currentOption?.pro && !isPro) {
+      setType("notify");
+    }
+  }, [type, isPro, setType]);
+
   if (loading) {
     return (
       <div className={block.className}>
@@ -96,23 +108,34 @@ const UserForm = ({
     <div className={block.className}>
       <div className="space-y-2">
         <ButtonGroup className="w-full">
-          {typeOptions.map((option) => (
-            <button
-              key={option.value}
-              type="button"
-              className={cn(
-                block.input.className,
-                "flex-1 h-9 sm:h-10 px-2 sm:px-3 md:px-4 text-xs sm:text-sm font-semibold transition-all duration-150 text-center",
-                "focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0",
-                type === option.value
-                  ? "bg-yellow-200 text-black"
-                  : "bg-white text-black"
-              )}
-              onClick={() => setType(option.value)}
-            >
-              {option.label}
-            </button>
-          ))}
+          {typeOptions.map((option) => {
+            const isDisabled = option.pro && !isPro;
+            return (
+              <button
+                key={option.value}
+                type="button"
+                disabled={isDisabled}
+                className={cn(
+                  block.input.className,
+                  "flex-1 h-9 sm:h-10 px-2 sm:px-3 md:px-4 text-xs sm:text-sm font-semibold transition-all duration-150 text-center",
+                  "focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0",
+                  isDisabled
+                    ? "opacity-50 cursor-not-allowed bg-gray-100 text-gray-400"
+                    : type === option.value
+                    ? "bg-yellow-200 text-black"
+                    : "bg-white text-black"
+                )}
+                onClick={() => {
+                  if (!isDisabled) {
+                    setType(option.value);
+                  }
+                }}
+                title={isDisabled ? "Upgrade to Pro to use this feature" : undefined}
+              >
+                {option.label}
+              </button>
+            );
+          })}
         </ButtonGroup>
       </div>
       {user.name ? (

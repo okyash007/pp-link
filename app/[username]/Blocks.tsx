@@ -55,6 +55,7 @@ const Blocks = ({ blocks, data }: { blocks: any[]; data: any }) => {
               setMedia={setMedia}
               type={type}
               setType={setType}
+              subscriptionStatus={data.subscription_status}
               key={block.type}
             />
           );

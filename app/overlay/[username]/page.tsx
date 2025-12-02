@@ -31,7 +31,7 @@ const page = async ({ params }: { params: Promise<{ username: string }> }) => {
   if (!creator) {
     return <div>Creator not found</div>;
   }
-  return <Client creator={creator} blocks={creator.overlay.blocks} />;
+  return <Client creator={creator} blocks={creator.overlay.blocks} username={username} />;
 };
 
 export default page;

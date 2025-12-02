@@ -18,6 +18,8 @@ interface Tip {
   visitor_name: string;
   visitor_email: string;
   visitor_phone: string;
+  type?: string;
+  media?: string;
 }
 
 const getLatestCreatedAt = (tips: Tip[]): number | null => {
@@ -125,19 +127,42 @@ const Tips = ({ creator, tipBlock }: { creator: any; tipBlock: any }) => {
   useEffect(() => {
     if (tips.length === 0) return;
 
+    const currentTip = tips[0];
+    let timeoutDuration: number;
+
+    // Check if current tip is media share type
+    if (currentTip?.type === "media-share") {
+      // Use media_share_time from tipBlock.data, default to 10 seconds (10000ms)
+      timeoutDuration = tipBlock?.data?.media_share_time 
+        ? tipBlock.data.media_share_time * 1000 
+        : 10000;
+    } else {
+      // Use display_time for other tip types, default to 20 seconds (20000ms)
+      timeoutDuration = tipBlock.data.display_time ? tipBlock.data.display_time * 1000 : 20000;
+    }
+
+    const startTime = new Date();
+    const endTime = new Date(startTime.getTime() + timeoutDuration);
+    
+    console.log("Timeout Duration:", timeoutDuration, "ms");
+    console.log("Start Time:", startTime.toISOString());
+    console.log("End Time:", endTime.toISOString());
+
     const timer = setTimeout(
       () => {
+        const actualEndTime = new Date();
+        console.log("Actual End Time:", actualEndTime.toISOString());
         setTips((prevTips) => {
           const newTips = [...prevTips];
           newTips.shift(); // Remove the first tip from the array
           return newTips;
         });
       },
-      tipBlock.display_time ? tipBlock.display_time : 20000
+      timeoutDuration
     );
 
     return () => clearTimeout(timer);
-  }, [tips.length]);
+  }, [tips.length, tips]);
 
   // Text-to-Speech effect - plays TTS when a new tip with message arrives
   // useEffect(() => {

@@ -272,6 +272,7 @@ const Tips = ({ creator: initialCreator, tipBlock: initialTipBlock }: { creator:
           creator_id: "test",
           amount: 10000,
           currency: "₹",
+          display_name: "John Doe",
           message: "lore ipsum dolor sit amet",
         }}
       />

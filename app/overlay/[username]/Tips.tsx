@@ -3,6 +3,7 @@
 import { getTips } from "@/backend/getTips";
 import { runTextToSpeech } from "@/lib/runTextToSpeech";
 import { useState, useEffect } from "react";
+import { useParams } from "next/navigation";
 import Tip from "./Tip";
 
 interface Tip {
@@ -34,11 +35,15 @@ const getLatestCreatedAt = (tips: Tip[]): number | null => {
   return parseInt(sortedTips[0].created_at);
 };
 
-const Tips = ({ creator, tipBlock }: { creator: any; tipBlock: any }) => {
+const Tips = ({ creator: initialCreator, tipBlock: initialTipBlock }: { creator: any; tipBlock: any }) => {
+  const [creator, setCreator] = useState(initialCreator);
+  const [tipBlock, setTipBlock] = useState(initialTipBlock);
   const [tips, setTips] = useState<Tip[]>([]);
   const currentTime = Math.floor(Date.now() / 1000);
   const [loading, setLoading] = useState(true);
   const [lastProcessedTipId, setLastProcessedTipId] = useState<string | null>(null);
+  const params = useParams();
+  const username = params?.username as string;
 
   // Unlock audio context on first user interaction (click, touch, keypress)
   useEffect(() => {
@@ -89,6 +94,57 @@ const Tips = ({ creator, tipBlock }: { creator: any; tipBlock: any }) => {
     };
   }, []);
 
+  // Fetch creator data every 5 seconds, but only if there's no current tip
+  useEffect(() => {
+    // Don't fetch if there's a current tip being displayed
+
+    
+    const currentTip = tips[0];
+    console.log("currentTip", currentTip);
+    if (currentTip) {
+      return;
+    }
+
+    const fetchCreator = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/creator/${username}/overlay`,
+          {
+            cache: "no-store",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (response.ok) {
+          const result = await response.json();
+          if (result.data) {
+            setCreator(result.data);
+            // Update tip block from the refetched creator data
+            const updatedTipBlock = result.data.overlay?.blocks?.find(
+              (block: any) => block.type === "tip"
+            );
+            if (updatedTipBlock) {
+              setTipBlock(updatedTipBlock);
+            }
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching creator:", error);
+      }
+    };
+
+    // Fetch immediately when there's no current tip
+    fetchCreator();
+
+    // Set up interval to fetch every 5 seconds
+    const intervalId = setInterval(fetchCreator, 5000);
+
+    // Cleanup interval on unmount or when a tip appears
+    return () => clearInterval(intervalId);
+  }, [username, tips]);
+
   useEffect(() => {
     const fetchTips = async () => {
       const tips = await getTips(creator.creator_id, currentTime.toString());
@@ -98,7 +154,7 @@ const Tips = ({ creator, tipBlock }: { creator: any; tipBlock: any }) => {
       setLoading(false);
     };
     fetchTips();
-  }, []);
+  }, [creator.creator_id]);
 
   useEffect(() => {
     // Only start polling once loading is complete

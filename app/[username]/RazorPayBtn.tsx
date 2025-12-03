@@ -61,9 +61,15 @@ const RazorPayBtn = ({
     // Clear any existing errors if validation passes
     user.setuser({ errors: [] });
 
+    const razorpayKey = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID;
+    if (!razorpayKey) {
+      user.setuser({ errors: ["Razorpay key is not configured"] });
+      return;
+    }
+
     if (typeof window !== "undefined" && window.Razorpay) {
       const options = {
-        key: "rzp_test_RlisDJzfagn5g8", // Enter the Key ID generated from the Dashboard
+        key: razorpayKey, // Enter the Key ID generated from the Dashboard
         amount: user.amount * 100, // Amount is in currency subunits.
         currency: user.currency,
         name: creatorName, //your business name

@@ -11,39 +11,6 @@ const Client = ({ creator: initialCreator, blocks: initialBlocks, username }: { 
   const [blocks] = useState(initialBlocks);
   const searchParams = useSearchParams();
 
-  // Fetch creator data every 10 seconds
-  // useEffect(() => {
-  //   const fetchCreator = async () => {
-  //     try {
-  //       const response = await fetch(
-  //         `${process.env.NEXT_PUBLIC_API_URL}/creator/${username}/overlay`,
-  //         {
-  //           cache: "no-store",
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //           },
-  //         }
-  //       );
-
-  //       if (response.ok) {
-  //         const result = await response.json();
-  //         if (result.data) {
-  //           setCreator(result.data);
-  //           setBlocks(result.data.overlay?.blocks || []);
-  //         }
-  //       }
-  //     } catch (error) {
-  //       console.error("Error fetching creator:", error);
-  //     }
-  //   };
-
-  //   // Set up interval to fetch every 10 seconds
-  //   const intervalId = setInterval(fetchCreator, 10000);
-
-  //   // Cleanup interval on unmount
-  //   return () => clearInterval(intervalId);
-  // }, [username]);
-
   const blockType = searchParams.get("block_type");
 
   const block = blocks.find((block) => block.type === blockType);

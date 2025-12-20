@@ -315,7 +315,7 @@ export default function Home() {
                 </h2>
 
                 <p className="text-sm sm:text-base w-full px-18 pb-10 font-semibold text-black/80 leading-relaxed">
-                  Whether you're just starting out or already streaming full-time, PotatoPay helps you turn every shoutout into real support — with zero setup stress.
+                  Whether you&apos;re just starting out or already streaming full-time, PotatoPay helps you turn every shoutout into real support — with zero setup stress.
                 </p>
               </div>
 
@@ -386,7 +386,8 @@ export default function Home() {
             <div className="border-t-[2px] border-black/20 pt-8 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
               <div className="space-y-1">
                 <p className="text-sm font-black">
-                  © {new Date().getFullYear()} PotatoPay.co
+                  {/* © {new Date().getFullYear()} PotatoPay.co */}
+                  © 2025 PotatoPay.co
                 </p>
                 <p className="text-[11px] font-semibold text-black/60">
                   India&apos;s #1st Tipping Platform For Live Streamers.
@@ -399,7 +400,7 @@ export default function Home() {
                       <desc>
                         Twitter X Streamline Icon: https://streamlinehq.com
                       </desc>
-                      <path d="M12.6 0.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867 -5.07 -4.425 5.07H0.316l5.733 -6.57L0 0.75h5.063l3.495 4.633L12.601 0.75Zm-0.86 13.028h1.36L4.323 2.145H2.865z" stroke-width="2"></path>
+                      <path d="M12.6 0.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867 -5.07 -4.425 5.07H0.316l5.733 -6.57L0 0.75h5.063l3.495 4.633L12.601 0.75Zm-0.86 13.028h1.36L4.323 2.145H2.865z" strokeWidth="2"></path>
                     </svg>
                   </a>
 
@@ -410,11 +411,11 @@ export default function Home() {
                       </desc>
                       <g id="instagram">
                         <g id="Group 4546">
-                          <path id="Vector" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" d="M10.3332 3.64404c-0.1381 0 -0.25 -0.11193 -0.25 -0.25s0.1119 -0.25 0.25 -0.25" stroke-width="2"></path>
-                          <path id="Vector_2" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" d="M10.3332 3.64404c0.1381 0 0.25 -0.11193 0.25 -0.25s-0.1119 -0.25 -0.25 -0.25" stroke-width="2"></path>
+                          <path id="Vector" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" d="M10.3332 3.64404c-0.1381 0 -0.25 -0.11193 -0.25 -0.25s0.1119 -0.25 0.25 -0.25" strokeWidth="2"></path>
+                          <path id="Vector_2" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" d="M10.3332 3.64404c0.1381 0 0.25 -0.11193 0.25 -0.25s-0.1119 -0.25 -0.25 -0.25" strokeWidth="2"></path>
                         </g>
-                        <path id="Rectangle 2" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" d="M0.858276 3.43141c0 -1.42103 1.151974 -2.573012 2.573014 -2.573012h6.86141c1.421 0 2.573 1.151982 2.573 2.573012v6.86139c0 1.421 -1.152 2.573 -2.573 2.573H3.43129c-1.42104 0 -2.573014 -1.152 -2.573014 -2.573V3.43141Z" stroke-width="2"></path>
-                        <path id="Ellipse 11" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" d="M4.312 6.862a2.55 2.55 0 1 0 5.1 0 2.55 2.55 0 1 0 -5.1 0" stroke-width="2"></path>
+                        <path id="Rectangle 2" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" d="M0.858276 3.43141c0 -1.42103 1.151974 -2.573012 2.573014 -2.573012h6.86141c1.421 0 2.573 1.151982 2.573 2.573012v6.86139c0 1.421 -1.152 2.573 -2.573 2.573H3.43129c-1.42104 0 -2.573014 -1.152 -2.573014 -2.573V3.43141Z" strokeWidth="2"></path>
+                        <path id="Ellipse 11" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" d="M4.312 6.862a2.55 2.55 0 1 0 5.1 0 2.55 2.55 0 1 0 -5.1 0" strokeWidth="2"></path>
                       </g>
                     </svg>
                   </a>

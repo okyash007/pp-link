@@ -87,7 +87,10 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/cool.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/cool.png", type: "image/png" },
+    ],
     apple: "/cool.png",
   },
 };
@@ -109,8 +112,9 @@ export default function RootLayout({
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Potatopay - Turn boring UPI payments into exciting, gamified tips" />
         <meta name="twitter:image" content={ogImageUrl} />
+        <link rel="icon" type="image/png" href={`${siteUrl}/favicon.ico`} />
         <link rel="icon" type="image/png" href={`${siteUrl}/cool.png`} />
-        <link rel="shortcut icon" type="image/png" href={`${siteUrl}/cool.png`} />
+        <link rel="shortcut icon" href={`${siteUrl}/favicon.ico`} />
         <link rel="apple-touch-icon" href={`${siteUrl}/cool.png`} />
       </head>
       <body

@@ -13,6 +13,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://potatopay.co";
+const ogImageUrl = `${siteUrl}/og-image.png`;
+
 export const metadata: Metadata = {
   title: "Potatopay.co - The Future of Digital Payments & Fun Fan Funding",
   description: "Turn boring UPI payments into exciting, gamified tips. More earnings for creators, more fun for fans.",
@@ -44,7 +47,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Potatopay" }],
   creator: "Potatopay",
   publisher: "Potatopay",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://potatopay.co"),
+  metadataBase: new URL(siteUrl),
   alternates: {
     canonical: "/",
   },
@@ -57,10 +60,10 @@ export const metadata: Metadata = {
     description: "Turn boring UPI payments into exciting, gamified tips. More earnings for creators, more fun for fans.",
     images: [
       {
-        url: "/icon.svg",
+        url: ogImageUrl,
         width: 1200,
         height: 630,
-        alt: "Potatopay - India's #1st Tipping Platform For Live Streamers",
+        alt: "Potatopay - Turn boring UPI payments into exciting, gamified tips",
       },
     ],
   },
@@ -68,7 +71,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Potatopay.co - The Future of Digital Payments & Fun Fan Funding",
     description: "Turn boring UPI payments into exciting, gamified tips. More earnings for creators, more fun for fans.",
-    images: ["/icon.svg"],
+    images: [ogImageUrl],
     creator: "@potatopayco",
     site: "@potatopayco",
   },
@@ -98,6 +101,14 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4" async></script>
+        {/* WhatsApp and Facebook specific meta tags - these require absolute URLs */}
+        <meta property="og:image" content={ogImageUrl} />
+        <meta property="og:image:secure_url" content={ogImageUrl} />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Potatopay - Turn boring UPI payments into exciting, gamified tips" />
+        <meta name="twitter:image" content={ogImageUrl} />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

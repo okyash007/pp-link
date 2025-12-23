@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://potatopay.co";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://pp-link.vercel.app";
 const ogImageUrl = `${siteUrl}/og-image.png`;
 
 export const metadata: Metadata = {

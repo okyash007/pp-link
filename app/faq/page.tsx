@@ -232,7 +232,7 @@ export default function FaqPage() {
                       to update your registered email.
                     </p>
                   </div>
-
+                  {/* 
                   <div className="rounded-3xl border-[3px] border-black bg-white p-5 md:p-6
                       shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-2">
                     <h3 className="text-sm md:text-base font-black">I forgot my 2FA code, how do I get it?</h3>
@@ -256,7 +256,7 @@ export default function FaqPage() {
                         X.com
                       </a>{" "}
                     </p>
-                  </div>
+                  </div> */}
                 </div>
               </div>
 

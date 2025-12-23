@@ -101,7 +101,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4" async></script>
-        {/* WhatsApp and Facebook specific meta tags - these require absolute URLs */}
+        {/* Explicit favicon links for WhatsApp and browsers */}
         <meta property="og:image" content={ogImageUrl} />
         <meta property="og:image:secure_url" content={ogImageUrl} />
         <meta property="og:image:type" content="image/png" />
@@ -109,6 +109,9 @@ export default function RootLayout({
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Potatopay - Turn boring UPI payments into exciting, gamified tips" />
         <meta name="twitter:image" content={ogImageUrl} />
+        <link rel="icon" type="image/png" href={`${siteUrl}/cool.png`} />
+        <link rel="shortcut icon" type="image/png" href={`${siteUrl}/cool.png`} />
+        <link rel="apple-touch-icon" href={`${siteUrl}/cool.png`} />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

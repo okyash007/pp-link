@@ -219,7 +219,7 @@ export default function Home() {
                 <div className="pointer-events-none absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-[#AAD6B8]/80 blur-3xl" />
 
                 {/* Mascots lurking around */}
-                <div className="absolute top-2 right-2 md:top-4 md:right-4 w-32 h-32 md:w-54 md:h-54 animate-[floatY_5s_ease-in-out_infinite] opacity-90">
+                <div className="absolute top-2 right-1 md:top-4 md:right-4 w-22 h-22 md:w-54 md:h-54 animate-[floatY_5s_ease-in-out_infinite] opacity-90">
                   <Image
                     src={moneyMascot}
                     alt="Money mascot"

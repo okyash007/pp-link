@@ -49,11 +49,13 @@ export default function PrivacyPage() {
         {/* Header / Nav */}
         <header className="border-b-[3px] border-black bg-white/90 backdrop-blur px-4 py-6">
           <div className="mx-auto flex max-w-6xl items-center justify-between gap-6">
-            <div className="flex items-center gap-3">
-              <div className="h-14 w-14 border-[4px] border-black bg-[#FEF18C] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center -rotate-3 overflow-hidden">
+            <Link
+              href="/"
+              className="flex items-center">
+              <div className="h-18 w-18 flex items-center justify-center overflow-hidden">
                 <Image
                   src={coolPotato}
-                  alt="PotatoPay mascot"
+                  alt="Potatopay mascot"
                   className="object-contain w-full h-full"
                   priority
                 />
@@ -66,7 +68,7 @@ export default function PrivacyPage() {
                   The Future of Digital Payments & Fun Fan Funding
                 </span>
               </div>
-            </div>
+            </Link>
 
             <div className="flex items-center gap-4">
               <Link
@@ -77,10 +79,10 @@ export default function PrivacyPage() {
               </Link>
               <Button
                 asChild
-                className="h-auto bg-[#828BF8] hover:bg-[#5C66D4] text-white font-black text-xs px-4 py-2 border-[3px] border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-150"
+                className="hidden md:inline-flex h-auto bg-[#828BF8] hover:bg-[#5C66D4] text-white font-black text-xs px-4 py-2 border-[3px] border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-150"
               >
                 <Link
-                  href="https://forms.gle/G6viymkGKyUhFzK36"
+                  href="https://dashboard.potatopay.co/signup"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -98,11 +100,11 @@ export default function PrivacyPage() {
               <p className="inline-flex items-center gap-2 rounded-full bg-[#AAD6B8]/60 border-[2px] border-black px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em]">
                 Privacy
               </p>
-              <h1 className="text-2xl md:text-5xl font-black font-semibold">
+              <h1 className="text-2xl md:text-5xl text-black font-semibold">
                 Privacy Policy
               </h1>
               <p className="text-sm mt-2 font-semibold text-black/70 w-full">
-                At PotatoPay.co, we value your privacy and are committed to protecting your personal information. This Privacy Policy outlines how we collect, use, and safeguard your data.
+                At Potatopay.co, we value your privacy and are committed to protecting your personal information. This Privacy Policy outlines how we collect, use, and safeguard your data.
 
 
               </p>
@@ -203,7 +205,7 @@ export default function PrivacyPage() {
                 <h2 className="text-lg md:text-xl font-black">7. THIRD-PARTY LINKS</h2>
                 <ol className="text-sm md:text-base font-semibold text-black/75 leading-loose">
                   <li>7.1 Our Website may contain links to third-party websites, which are governed by their own privacy policies.</li>
-                  <li> 7.2 PotatoPay is not responsible for the content or practices of third-party websites.</li>
+                  <li> 7.2 Potatopay is not responsible for the content or practices of third-party websites.</li>
                 </ol>
               </div>
 
@@ -257,7 +259,7 @@ export default function PrivacyPage() {
                 </h3>
               </div>
               <p className="text-sm font-semibold text-black/80 max-w-2xl mx-auto">
-                PotatoPay speaks your language, fits your flow, and supports you from Day 1. No minimum followers. No long waitlists.                <a
+                Potatopay speaks your language, fits your flow, and supports you from Day 1. No minimum followers. No long waitlists.                <a
                   href="mailto:support@potatopay.co"
                   className="underline font-black"
                 >
@@ -270,8 +272,8 @@ export default function PrivacyPage() {
             <div className="border-t-[2px] border-black/20 pt-8 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
               <div className="space-y-1">
                 <p className="text-sm font-black">
-                  {/* © {new Date().getFullYear()} PotatoPay.co */}
-                  © 2025 PotatoPay.co
+                  {/* © {new Date().getFullYear()} Potatopay.co */}
+                  © 2025 Potatopay Private Limited.
 
                 </p>
                 <p className="text-[11px] font-semibold text-black/60">

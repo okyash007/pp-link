@@ -49,11 +49,13 @@ export default function TermsPage() {
         {/* Header / Nav */}
         <header className="border-b-[3px] border-black bg-white/90 backdrop-blur px-4 py-6">
           <div className="mx-auto flex max-w-6xl items-center justify-between gap-6">
-            <div className="flex items-center gap-3">
-              <div className="h-14 w-14 border-[4px] border-black bg-[#FEF18C] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center -rotate-3 overflow-hidden">
+            <Link
+              href="/"
+              className="flex items-center">
+              <div className="h-18 w-18 flex items-center justify-center overflow-hidden">
                 <Image
                   src={coolPotato}
-                  alt="PotatoPay mascot"
+                  alt="Potatopay mascot"
                   className="object-contain w-full h-full"
                   priority
                 />
@@ -66,7 +68,7 @@ export default function TermsPage() {
                   The Future of Digital Payments & Fun Fan Funding
                 </span>
               </div>
-            </div>
+            </Link>
 
             <div className="flex items-center gap-4">
               <Link
@@ -77,10 +79,10 @@ export default function TermsPage() {
               </Link>
               <Button
                 asChild
-                className="h-auto bg-[#828BF8] hover:bg-[#5C66D4] text-white font-black text-xs px-4 py-2 border-[3px] border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-150"
+                className="hidden md:inline-flex h-auto bg-[#828BF8] hover:bg-[#5C66D4] text-white font-black text-xs px-4 py-2 border-[3px] border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-150"
               >
                 <Link
-                  href="https://forms.gle/G6viymkGKyUhFzK36"
+                  href="https://dashboard.potatopay.co/signup"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -98,11 +100,11 @@ export default function TermsPage() {
               <p className="inline-flex items-center gap-2 rounded-full bg-[#AAD6B8]/60 border-[2px] border-black px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em]">
                 Legal
               </p>
-              <h1 className="text-2xl md:text-5xl font-black font-semibold">
+              <h1 className="text-2xl md:text-5xl text-black font-semibold">
                 Terms &amp; Conditions
               </h1>
               <p className="text-sm mt-2 font-semibold text-black/70 w-full">
-                We, PotatoPay.co (&quot;PotatoPay&quot;), a platform established under the laws of the Republic of India, operate to facilitate and support creators (&quot;Streamers&quot;) and their audience (&quot;Supporters&quot;). These Terms and Conditions (&quot;Terms&quot;) govern your use of PotatoPay.co (&quot;Website&quot;) and associated services. By using this Website, you agree to these Terms. If you disagree with any provision, please discontinue use.
+                We, Potatopay.co (&quot;Potatopay&quot;), a platform established under the laws of the Republic of India, operate to facilitate and support creators (&quot;Streamers&quot;) and their audience (&quot;Supporters&quot;). These Terms and Conditions (&quot;Terms&quot;) govern your use of Potatopay.co (&quot;Website&quot;) and associated services. By using this Website, you agree to these Terms. If you disagree with any provision, please discontinue use.
               </p>
             </section>
 
@@ -111,7 +113,7 @@ export default function TermsPage() {
                 <h2 className="text-lg md:text-xl font-black">1. DEFINITIONS</h2>
                 <ol className="text-sm md:text-base font-semibold text-black/75 leading-loose">
 
-                  <li>1.1 <b>Website</b> refers to PotatoPay.co and its associated services.</li>
+                  <li>1.1 <b>Website</b> refers to Potatopay.co and its associated services.</li>
 
                   <li>1.2 <b>Streamer</b> means a registered user who monetizes their content by receiving tips through the Website.</li>
 
@@ -137,13 +139,13 @@ export default function TermsPage() {
                     Streamers are responsible for all content they create, upload, or broadcast.
                   </li>
                   <li>
-                    Must provide accurate details and complete KYC verification as mandated by law and Razorpay Route requirements before receiving settlements.
+                    Must provide accurate details and complete KYC verification as mandated by law and payment gateway's requirements before receiving settlements.
                   </li>
                   <li>
                     Must comply with Indian laws including IT Act, data protection rules, and tax obligations (including GST if applicable).
                   </li>
                   <li>
-                    Are entitled to receive a share of tips after PotatoPay deducts its platform commission and applicable taxes.
+                    Are entitled to receive a share of tips after Potatopay deducts its platform commission and applicable taxes.
                   </li>
                   <li>
                     Must not use the platform for unlawful or prohibited activities (fraud, gambling, hate speech, political funding, etc.).
@@ -193,7 +195,7 @@ export default function TermsPage() {
                   <li>
                     Create or distribute content that promotes hate speech, harassment, or discrimination based on race, religion, gender, sexual orientation, caste, or any other protected category.                  </li>
                   <li>
-                    Engage in any behavior that undermines a respectful and inclusive environment on PotatoPay.
+                    Engage in any behavior that undermines a respectful and inclusive environment on Potatopay.
                   </li>
                 </ul>
               </div>
@@ -205,16 +207,16 @@ export default function TermsPage() {
                   4.1 <b>Payment Gateway</b>: All payments are processed through Razorpay’s secure gateway in compliance    with RBI regulations.
                 </p>
                 <p className="text-sm md:text-base font-semibold text-black/75 leading-relaxed">
-                  4.2 <b>Platform Fee</b>: PotatoPay deducts a 5% service/platform fee on each tip as commission before settlement to the Streamer.
+                  4.2 <b>Platform Fee</b>: Potatopay deducts a nominal service/platform fee on each settlement to the Streamer.
                 </p>
                 <p className="text-sm md:text-base font-semibold text-black/75 leading-relaxed">
-                  4.3 <b>Settlement</b>: Net amounts (after commission, applicable GST, and payment gateway charges) are automatically transferred to Streamer-linked accounts via Razorpay Route within the prescribed settlement cycle (T+1/T+2).
+                  4.3 <b>Settlement</b>: Amounts are automatically transferred to Streamer-linked accounts via Razorpay Route within the prescribed settlement cycle (T+2 for domestic /T+7 for international).
                 </p>
                 <p className="text-sm md:text-base font-semibold text-black/75 leading-relaxed">
-                  4.4 <b>Refunds</b>: Tips are voluntary and final; refunds are only issued for duplicate payments or technical failures.
+                  4.4 <b>Refunds</b>: Tips are voluntary and final; No refunds are issued from the platform or creator.
                 </p>
                 <p className="text-sm md:text-base font-semibold text-black/75 leading-relaxed">
-                  4.5 <b>Compliance</b>: AStreamers must complete KYC verification to receive settlements.
+                  4.5 <b>Compliance</b>: A streamer must complete KYC verification to start receiveing settlements.
                 </p>
               </div>
 
@@ -224,7 +226,7 @@ export default function TermsPage() {
                 </h2>
                 <ul className="space-y-2 text-sm md:text-base font-semibold text-black/75 leading-relaxed list-disc ml-5">
                   <li>
-                    By uploading content, Streamers grant PotatoPay a non-exclusive, worldwide license to display, promote, and distribute it for the purpose of platform functionality and marketing.
+                    By uploading content, Streamers grant Potatopay a non-exclusive, worldwide license to display, promote, and distribute it for the purpose of platform functionality and marketing.
                   </li>
                   <li>
                     Users are solely responsible for ensuring no third-party rights are infringed.
@@ -238,7 +240,7 @@ export default function TermsPage() {
                   6. TERMINATION & ACCOUNT SUSPENSION
                 </h2>
                 <p className="text-sm md:text-base font-semibold text-black/75 leading-relaxed">
-                  PotatoPay reserves the right to suspend or terminate accounts for violations of these Terms, non-compliance with KYC norms, or suspicious transactions.
+                  Potatopay reserves the right to suspend or terminate accounts for violations of these Terms, non-compliance with KYC norms, or suspicious transactions.
                 </p>
               </div>
 
@@ -247,7 +249,7 @@ export default function TermsPage() {
                   7. LIMITATION OF LIABILITY
                 </h2>
                 <p className="text-sm md:text-base font-semibold text-black/75 leading-relaxed">
-                  PotatoPay is not liable for:
+                  Potatopay is not liable for:
                 </p>
                 <ul className="space-y-2 text-sm md:text-base font-semibold text-black/75 leading-relaxed list-disc ml-5">
                   <li>
@@ -275,7 +277,7 @@ export default function TermsPage() {
                     Streamers are responsible for declaring and paying taxes on income earned through tips
                   </li>
                   <li>
-                    PotatoPay may provide transaction records to assist Streamers but is not liable for their tax compliance.
+                    Potatopay may provide transaction records to assist Streamers but is not liable for their tax compliance.
                   </li>
                 </ul>
               </div>
@@ -323,7 +325,7 @@ export default function TermsPage() {
                 </h3>
               </div>
               <p className="text-sm font-semibold text-black/80 max-w-2xl mx-auto">
-                PotatoPay speaks your language, fits your flow, and supports you from Day 1. No minimum followers. No long waitlists.                <a
+                Potatopay speaks your language, fits your flow, and supports you from Day 1. No minimum followers. No long waitlists.                <a
                   href="mailto:support@potatopay.co"
                   className="underline font-black"
                 >
@@ -336,8 +338,8 @@ export default function TermsPage() {
             <div className="border-t-[2px] border-black/20 pt-8 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
               <div className="space-y-1">
                 <p className="text-sm font-black">
-                  {/* © {new Date().getFullYear()} PotatoPay.co */}
-                  © 2025 PotatoPay.co
+                  {/* © {new Date().getFullYear()} Potatopay.co */}
+                  © 2025 Potatopay Private Limited.
                 </p>
                 <p className="text-[11px] font-semibold text-black/60">
                   India&apos;s #1st Tipping Platform For Live Streamers.

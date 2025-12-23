@@ -49,11 +49,13 @@ export default function RefundPage() {
         {/* Header / Nav */}
         <header className="border-b-[3px] border-black bg-white/90 backdrop-blur px-4 py-6">
           <div className="mx-auto flex max-w-6xl items-center justify-between gap-6">
-            <div className="flex items-center gap-3">
-              <div className="h-14 w-14 border-[4px] border-black bg-[#FEF18C] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center -rotate-3 overflow-hidden">
+            <Link
+              href="/"
+              className="flex items-center">
+              <div className="h-18 w-18 flex items-center justify-center overflow-hidden">
                 <Image
                   src={coolPotato}
-                  alt="PotatoPay mascot"
+                  alt="Potatopay mascot"
                   className="object-contain w-full h-full"
                   priority
                 />
@@ -66,7 +68,7 @@ export default function RefundPage() {
                   The Future of Digital Payments & Fun Fan Funding
                 </span>
               </div>
-            </div>
+            </Link>
 
             <div className="flex items-center gap-4">
               <Link
@@ -77,10 +79,10 @@ export default function RefundPage() {
               </Link>
               <Button
                 asChild
-                className="h-auto bg-[#828BF8] hover:bg-[#5C66D4] text-white font-black text-xs px-4 py-2 border-[3px] border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-150"
+                className="hidden md:inline-flex h-auto bg-[#828BF8] hover:bg-[#5C66D4] text:white font-black text-xs px-4 py-2 border-[3px] border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-150"
               >
                 <Link
-                  href="https://forms.gle/G6viymkGKyUhFzK36"
+                  href="https://dashboard.potatopay.co/signup"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -98,11 +100,11 @@ export default function RefundPage() {
               <p className="inline-flex items-center gap-2 rounded-full bg-[#AAD6B8]/60 border-[2px] border-black px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em]">
                 Payments
               </p>
-              <h1 className="text-2xl md:text-5xl font-black font-semibold">
+              <h1 className="text-2xl md:text-5xl text-black font-semibold">
                 Refund and Cancellation Policy
               </h1>
               <p className="text-sm mt-2 font-semibold text-black/70 w-full">
-                At PotatoPay.co (&quot;PotatoPay&quot;), we strive to provide a transparent and seamless experience for Streamers and Supporters. This Refund and Cancellation Policy governs financial transactions on our platform. By using our services, you acknowledge and agree to this policy.
+                At Potatopay.co (&quot;Potatopay&quot;), we strive to provide a transparent and seamless experience for Streamers and Supporters. This Refund and Cancellation Policy governs financial transactions on our platform. By using our services, you acknowledge and agree to this policy.
 
               </p>
             </section>
@@ -113,7 +115,7 @@ export default function RefundPage() {
                 </h2>
                 <ol className="text-sm md:text-base font-semibold text-black/75 leading-loose">
 
-                  <li>1.1 All <b>tips</b> made by Supporters to Streamers on PotatoPay are voluntary and non-refundable. Supporters acknowledge that they are providing financial support without expecting goods, services, or any contractual compensation in return.</li>
+                  <li>1.1 All <b>tips</b> made by Supporters to Streamers on Potatopay are voluntary and non-refundable. Supporters acknowledge that they are providing financial support without expecting goods, services, or any contractual compensation in return.</li>
 
                   <li>1.2 Once a payment is successfully processed through our platform, it cannot be reversed, canceled, or refunded except in the cases outlined in this policy.</li>
 
@@ -128,7 +130,7 @@ export default function RefundPage() {
 
                   <li>2.1 <b>Minimum Tip Amount</b>: The minimum amount a Supporter can send is ₹10 per transaction.</li>
 
-                  <li>2.2 <b>Settlements</b>: Streamers receive tips after deduction of the 5% platform service fee and applicable taxes. Settlement to the Streamer’s bank account is handled vie our system.</li>
+                  <li>2.2 <b>Settlements</b>: All the transactions are settled to the streamer linked accounts after deducting a nominal platforn and service fees in T+2 days (T+7 days for international payments). Streamers receive tips after deduction of the platform service fee and applicable taxes. Settlement to the Streamer’s bank account is handled vie our system.</li>
 
                 </ol>
               </div>
@@ -152,7 +154,7 @@ export default function RefundPage() {
 
                 </h2>
                 <p className="text-sm md:text-base font-semibold text-black/75 leading-relaxed">
-                  While tips are generally non-refundable, PotatoPay may consider refunds in the following limited circumstances:
+                  While tips are generally non-refundable, Potatopay may consider refunds in the following limited circumstances:
                 </p>
                 <ul className="space-y-2 text-sm md:text-base font-semibold text-black/75 leading-relaxed list-disc ml-5">
                   <li>
@@ -165,7 +167,7 @@ export default function RefundPage() {
                     <b>Technical Failures</b>: If a transaction fails but funds are debited, refunds will be processed after confirmation with the payment gateway.
                   </li>
                   <li>
-                    <b>Streamer Violations</b>: If a Streamer violates Terms & Conditions, PotatoPay may refund affected Supporters at its discretion.
+                    <b>Streamer Violations</b>: If a Streamer violates Terms & Conditions, Potatopay may refund affected Supporters at its discretion.
                   </li>
                 </ul>
               </div>
@@ -181,7 +183,7 @@ export default function RefundPage() {
 
                   <li>5.2 Users cannot cancel a tip once the payment gateway has processed it.
                   </li>
-                  <li>5.3 In case of account suspension or termination, remaining balances may be withheld, refunded, or settled at PotatoPay’s discretion after review.
+                  <li>5.3 In case of account suspension or termination, remaining balances may be withheld, refunded, or settled at Potatopay’s discretion after review.
 
                   </li>
 
@@ -197,7 +199,7 @@ export default function RefundPage() {
                 </h2>
                 <ol className="text-sm md:text-base font-semibold text-black/75 leading-loose">
 
-                  <li>6.1 Supporters and Streamers must report payment-related disputes within <b>7 days</b> of the transaction date by writing to <a
+                  <li>6.1 Supporters and Streamers must report payment-related disputes within <b>48 hours</b> of the transaction date by writing to <a
                     href="mailto:support@potatopay.co"
                     className="underline font-black"
                   >
@@ -205,7 +207,7 @@ export default function RefundPage() {
                   </a>
                   </li>
 
-                  <li>6.2 All refund approvals are subject to verification and processed within <b>10–15 business days</b> to the original payment method.
+                  <li>6.2 All refund approvals are subject to verification and processed within <b>10–15 working days</b> to the original payment method.
                   </li>
 
                 </ol>
@@ -232,7 +234,7 @@ export default function RefundPage() {
                 </p>
 
                 <p className="mt-2 text-sm md:text-base font-semibold text-black/75 leading-relaxed">
-                  PotatoPay reserves the right to amend this Refund & Cancellation Policy at any time.
+                  Potatopay reserves the right to amend this Refund & Cancellation Policy at any time.
                 </p>
 
               </div>
@@ -257,7 +259,7 @@ export default function RefundPage() {
                 </h3>
               </div>
               <p className="text-sm font-semibold text-black/80 max-w-2xl mx-auto">
-                PotatoPay speaks your language, fits your flow, and supports you from Day 1. No minimum followers. No long waitlists.                <a
+                Potatopay speaks your language, fits your flow, and supports you from Day 1. No minimum followers. No long waitlists.                <a
                   href="mailto:support@potatopay.co"
                   className="underline font-black"
                 >
@@ -270,8 +272,8 @@ export default function RefundPage() {
             <div className="border-t-[2px] border-black/20 pt-8 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
               <div className="space-y-1">
                 <p className="text-sm font-black">
-                  {/* © {new Date().getFullYear()} PotatoPay.co */}
-                  © 2025 PotatoPay.co
+                  {/* © {new Date().getFullYear()} Potatopay.co */}
+                  © 2025 Potatopay Private Limited.
                 </p>
                 <p className="text-[11px] font-semibold text-black/60">
                   India&apos;s #1st Tipping Platform For Live Streamers.

@@ -55,7 +55,7 @@ export default function Home() {
   //   }
 
   //   await runTextToSpeech({
-  //     text: "Welcome to PotatoPay – India's first tipping platform for live streamers.",
+  //     text: "Welcome to Potatopay – India's first tipping platform for live streamers.",
   //     voice: "alloy",
   //     creatorId: "demo-homepage-creator",
   //     instructions:
@@ -111,11 +111,13 @@ export default function Home() {
         {/* Header / Nav */}
         <header className="border-b-[3px] border-black bg-white/90 backdrop-blur px-4 py-6">
           <div className="mx-auto flex max-w-6xl items-center justify-between gap-6">
-            <div className="flex items-center gap-3">
-              <div className="h-14 w-14 border-[4px] border-black bg-[#FEF18C] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center -rotate-3 overflow-hidden">
+            <Link
+              href="/"
+              className="flex items-center">
+              <div className="h-18 w-18 flex items-center justify-center overflow-hidden">
                 <Image
                   src={coolPotato}
-                  alt="PotatoPay mascot"
+                  alt="Potatopay mascot"
                   className="object-contain w-full h-full"
                   priority
                 />
@@ -128,7 +130,7 @@ export default function Home() {
                   The Future of Digital Payments & Fun Fan Funding
                 </span>
               </div>
-            </div>
+            </Link>
 
             <div className="flex items-center gap-4">
               <Link
@@ -139,10 +141,10 @@ export default function Home() {
               </Link>
               <Button
                 asChild
-                className="h-auto bg-[#828BF8] hover:bg-[#5C66D4] text-white font-black text-xs px-4 py-2 border-[3px] border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-150"
+                className="hidden md:inline-flex h-auto bg-[#828BF8] hover:bg-[#5C66D4] text-white font-black text-xs px-4 py-2 border-[3px] border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-150"
               >
                 <Link
-                  href="https://forms.gle/G6viymkGKyUhFzK36"
+                  href="https://dashboard.potatopay.co/signup"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -157,9 +159,9 @@ export default function Home() {
         <main className="flex-1 px-4 py-24 md:py-32 relative">
 
 
-          <div className="relative mx-auto max-w-5xl relative z-10">
+          <div className="relative mx-auto max-w-5xl z-10">
             {/* Floating mascots in background */}
-            <div className="pointer-events-none absolute -top-80 -right-48 w-220 h-220  animate-[floatY_9s_ease-in-out_infinite] hidden md:block" style={{ animationDelay: '1.5s' }}>
+            <div className="pointer-events-none absolute -top-80 -right-38 w-220 h-220  animate-[floatY_9s_ease-in-out_infinite] hidden md:block" style={{ animationDelay: '1.5s' }}>
               <Image
                 src={treeMascot}
                 alt="Tree mascot"
@@ -167,7 +169,7 @@ export default function Home() {
               />
             </div>
             {/* Hero section */}
-            <section className="text-center space-y-6 mr-45 mb-32 relative">
+            <section className="text-center space-y-6 mb-20 md:mr-72 md:mb-32 relative px-3 sm:px-0">
 
               <div className="inline-flex items-center gap-2 rounded-full border-[3px] border-black bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.2em] shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
                 <span className="h-2 w-2 rounded-full bg-[#FF6B9D]" />
@@ -188,14 +190,14 @@ export default function Home() {
               <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
                 <Button
                   asChild
-                  className="h-auto bg-[#FEF18C] hover:bg-[#FEE55A] text-black font-black text-base px-8 py-4 border-[4px] border-black rounded-2xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 transition-all duration-150"
+                  className="h-auto bg-[#FEF18C] hover:bg-[#FEE55A] text-black font-black text-base px-12 py-3 border-[4px] border-black rounded-2xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 transition-all duration-150"
                 >
                   <Link
-                    href="https://forms.gle/G6viymkGKyUhFzK36"
+                    href="https://dashboard.potatopay.co/signup"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Request Access
+                    Get Started with Potatopay
                   </Link>
                 </Button>
                 {/* <button
@@ -210,14 +212,14 @@ export default function Home() {
             </section>
 
             {/* Features section */}
-            <section className="mb-32">
+            <section className="mb-12 sm:mb-12">
               <div className="rounded-3xl border-[5px] border-black bg-[#828BF8] p-8 md:p-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] overflow-hidden relative">
                 {/* Glow blobs */}
                 <div className="pointer-events-none absolute -top-10 -right-10 h-40 w-40 rounded-full bg-[#FEF18C]/80 blur-3xl" />
                 <div className="pointer-events-none absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-[#AAD6B8]/80 blur-3xl" />
 
                 {/* Mascots lurking around */}
-                <div className="absolute top-2 right-2 md:top-4 md:right-4 w-32 h-32 md:w-48 md:h-48 animate-[floatY_5s_ease-in-out_infinite] opacity-90">
+                <div className="absolute top-2 right-2 md:top-4 md:right-4 w-32 h-32 md:w-54 md:h-54 animate-[floatY_5s_ease-in-out_infinite] opacity-90">
                   <Image
                     src={moneyMascot}
                     alt="Money mascot"
@@ -244,13 +246,13 @@ export default function Home() {
                     <p className="inline-flex items-center gap-2 rounded-full bg-black px-4 py-2 text-xs font-black uppercase tracking-[0.25em] text-[#FEF18C]">
                       Live Stream Toolkit
                     </p>
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white leading-tight font-semibold">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl text-white leading-tight font-semibold">
                       Everything a <span className="text-[#F2E69A]">Creator Needs</span> Built Into One Platform                    </h2>
 
-                    <p className="text-white font-medium -mt-2">PotatoPay is your <span className="text-[#F2E69A] font-bold">all-in-one integration service</span> to engage your audience, boost your revenue, and build a creator brand, without any confusing setup.</p>
+                    <p className="text-white font-medium -mt-2">Potatopay is your <span className="text-[#F2E69A] font-bold">all-in-one integration service</span> to engage your audience, boost your revenue, and build a creator brand, without any confusing setup.</p>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="rounded-xl border-[3px] border-black bg-white/95 p-6 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-150">
                       <p className="text-xs font-black uppercase tracking-widest text-black/60 mb-2">
                         Instant Shoutouts
@@ -263,7 +265,7 @@ export default function Home() {
                         OBS Integration
                       </p>
                       <p className="text-sm font-semibold text-black/80">
-                        No need to be a tech wizard. PotatoPay connects with OBS and all major streaming tools in just a few clicks.
+                        No need to be a tech wizard. Potatopay connects with OBS and all major streaming tools in just a few clicks.
                       </p>
                     </div>
                     <div className="rounded-xl border-[3px] border-black bg-[#FEF18C]/90 p-6 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-150">
@@ -283,7 +285,7 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <div className="mt-12 max-w-3xl rounded-2xl border-[3px] border-black bg-[#AAD6B8] px-6 py-4 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] text-center">
+                  <div className="mt-12 rounded-2xl border-[3px] border-black bg-[#AAD6B8] px-6 py-4 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] text-center">
                     <p className="text-sm font-black">
                       <span className="underline">Nominal</span> fees. No minimum followers.
                     </p>
@@ -295,7 +297,7 @@ export default function Home() {
               </div>
             </section>
 
-            <div className="-mt-30 w-full h-90 animate-[floatY_8s_ease-in-out_infinite] block">
+            <div className="w-full h-56 sm:h-64 md:h-80 animate-[floatY_8s_ease-in-out_infinite] block">
               <Image
                 src={coolPotato}
                 alt="Cool potato mascot"
@@ -304,23 +306,27 @@ export default function Home() {
             </div>
 
             {/* Creator friendly section */}
-            <section className="relative">
+            <section className="relative mt-12">
 
-              <div className="w-full text-center space-y-3">
-                <h2 className="text-2xl sm:text-4xl font-black leading-tight font-semibold text-[#828BF8]">
-                  Start Earning From Day <span className="text-[#FFF4AF] font-black
-  [text-shadow:-2px_-2px_0_#000,2px_-2px_0_#000,-2px_2px_0_#000,2px_2px_0_#000]">
-  1
-</span>
+              <div className="w-full text-center space-y-3 px-4 sm:px-0">
+                <h2 className="inline-flex items-center justify-center mx-auto rounded-2xl border-[3px] border-black bg-[#FEF18C] px-6 sm:px-8 py-3 text-lg sm:text-2xl md:text-3xl font-black tracking-tight shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+                  <span className="text-[#828BF8] mr-1">
+                    Start Earning From Day
+                  </span>
+                  <span className="text-[#000] font-black px-2 rounded-lg">1</span>
+                  {/* <span className="text-[#FFF4AF] font-black px-2 rounded-lg
+[text-shadow:-2px_-2px_0_#000,2px_-2px_0_#000,-2px_2px_0_#000,2px_2px_0_#000]">
+                    1
+                  </span> */}
                 </h2>
 
-                <p className="text-sm sm:text-base w-full px-18 pb-10 font-semibold text-black/80 leading-relaxed">
-                  Whether you&apos;re just starting out or already streaming full-time, PotatoPay helps you turn every shoutout into real support — with zero setup stress.
+                <p className="text-sm sm:text-base w-full px-4 sm:px-8 md:px-18 pb-10 font-semibold text-black/80 leading-relaxed">
+                  Whether you&apos;re just starting out or already streaming full-time, Potatopay helps you turn every shoutout into real support — with zero setup stress.
                 </p>
               </div>
 
-              <div className="grid gap-8 md:grid-cols-2 max-w-4xl mx-auto relative z-10">
-                <div className="rounded-3xl border-[4px] border-black bg-[#FEF18C]/60 p-8 shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden">
+              <div className="grid gap-6 sm:gap-8 md:grid-cols-2 max-w-4xl mx-auto relative z-10 px-3 sm:px-0">
+                <div className="rounded-3xl border-[4px] border-black bg-[#FEF18C]/60 p-6 sm:p-8 shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden">
                   <h3 className="text-xl md:text-2xl font-black mb-4 relative z-10">
                     Creator-friendly from day one
                   </h3>
@@ -330,13 +336,13 @@ export default function Home() {
                     <li>Indian payments &amp; compliance built in</li>
                   </ul>
                 </div>
-                <div className="rounded-3xl border-[4px] border-black bg-white p-8 shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-between gap-6 relative overflow-hidden">
+                <div className="rounded-3xl border-[4px] border-black bg-white p-6 sm:p-8 shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-between gap-6 relative overflow-hidden">
                   <div className="relative z-10">
                     <p className="text-sm font-black uppercase tracking-[0.2em] text-black/60 mb-3">
                       Simple setup
                     </p>
                     <p className="text-base font-semibold text-black/80">
-                      Share one link, stick a QR on your stream, and PotatoPay handles the rest.
+                      Share one link, stick a QR on your stream, and Potatopay handles the rest.
                     </p>
                   </div>
                   <Button
@@ -344,7 +350,7 @@ export default function Home() {
                     className="w-full h-auto bg-black hover:bg-[#222] text-[#FEF18C] font-black text-sm px-6 py-3 border-[3px] border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-150 relative z-10"
                   >
                     <Link
-                      href="https://forms.gle/G6viymkGKyUhFzK36"
+                      href="https://dashboard.potatopay.co/signup"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -373,7 +379,7 @@ export default function Home() {
                 </h3>
               </div>
               <p className="text-sm font-semibold text-black/80 max-w-2xl mx-auto">
-                PotatoPay speaks your language, fits your flow, and supports you from Day 1. No minimum followers. No long waitlists.                <a
+                Potatopay speaks your language, fits your flow, and supports you from Day 1. No minimum followers. No long waitlists.                <a
                   href="mailto:support@potatopay.co"
                   className="underline font-black"
                 >
@@ -386,8 +392,8 @@ export default function Home() {
             <div className="border-t-[2px] border-black/20 pt-8 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
               <div className="space-y-1">
                 <p className="text-sm font-black">
-                  {/* © {new Date().getFullYear()} PotatoPay.co */}
-                  © 2025 PotatoPay.co
+                  {/* © {new Date().getFullYear()} Potatopay.co */}
+                  © 2025 Potatopay Private Limited.
                 </p>
                 <p className="text-[11px] font-semibold text-black/60">
                   India&apos;s #1st Tipping Platform For Live Streamers.

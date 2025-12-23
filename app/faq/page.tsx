@@ -48,11 +48,13 @@ export default function FaqPage() {
         {/* Header / Nav */}
         <header className="border-b-[3px] border-black bg-white/90 backdrop-blur px-4 py-6">
           <div className="mx-auto flex max-w-6xl items-center justify-between gap-6">
-            <div className="flex items-center gap-3">
-              <div className="h-14 w-14 border-[4px] border-black bg-[#FEF18C] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center -rotate-3 overflow-hidden">
+            <Link
+              href="/"
+              className="flex items-center">
+              <div className="h-18 w-18 flex items-center justify-center overflow-hidden">
                 <Image
                   src={coolPotato}
-                  alt="PotatoPay mascot"
+                  alt="Potatopay mascot"
                   className="object-contain w-full h-full"
                   priority
                 />
@@ -65,7 +67,7 @@ export default function FaqPage() {
                   The Future of Digital Payments & Fun Fan Funding
                 </span>
               </div>
-            </div>
+            </Link>
 
             <div className="flex items-center gap-4">
               <Link
@@ -76,10 +78,10 @@ export default function FaqPage() {
               </Link>
               <Button
                 asChild
-                className="h-auto bg-[#828BF8] hover:bg-[#5C66D4] text-white font-black text-xs px-4 py-2 border-[3px] border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-150"
+                className="hidden md:inline-flex h-auto bg-[#828BF8] hover:bg-[#5C66D4] text-white font-black text-xs px-4 py-2 border-[3px] border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all duration-150"
               >
                 <Link
-                  href="https://forms.gle/G6viymkGKyUhFzK36"
+                  href="https://dashboard.potatopay.co/signup"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -92,72 +94,231 @@ export default function FaqPage() {
 
         <main className="flex-1 px-4 py-12 md:py-16">
           <div className="mx-auto max-w-4xl space-y-10">
-            <section className="">
+            <section>
               <p className="inline-flex items-center gap-2 rounded-full bg-[#AAD6B8]/60 border-[2px] border-black px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em]">
                 FAQ
               </p>
-              <h1 className="text-2xl md:text-5xl font-black font-semibold">
+              <h1 className="text-2xl md:text-5xl text-black font-semibold">
                 Frequently Asked Questions
               </h1>
               <p className="text-sm mt-2 font-semibold text-black/70 max-w-2xl">
-                If you have questions, We have the answers for you here, in case we dont , Please feel free to reach out to us via  <a
+                Learn how Potatopay works, how to receive support, and how we handle your data and fees. If something isn&apos;t covered here, you can always reach us at{" "}
+                <a
                   href="mailto:support@potatopay.co"
                   className="underline font-black"
                 >
                   support@potatopay.co
                 </a>
+                .
               </p>
             </section>
 
-            <section className="space-y-6">
-              <div className="rounded-3xl border-[3px] border-black bg-white p-5 md:p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-3">
-                <h2 className="text-lg md:text-xl font-black">
-                  What is PotatoPay and how does it work?
+            <section className="space-y-8">
+              {/* About Potatopay */}
+              <div className="space-around">
+                <h2 className="text-base md:text-lg font-black uppercase tracking-[0.2em] text-black/70">
+                  About Potatopay
                 </h2>
-                <p className="text-sm md:text-base font-semibold text-black/75 leading-relaxed">
-                  PotatoPay is a tip platform built for Indian content creators, especially YouTubers and streamers. If you’re a creator, you can create a profile and share your unique link with your audience. If you’re a supporter, you can send love (and money!) directly to your favorite creators — starting at just ₹10.
-                </p>
+
+                <div className="space-y-3">
+                  <div className="rounded-3xl border-[3px] border-black bg-white p-5 md:p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-2">
+                    <h3 className="text-sm md:text-base font-black">What is Potatopay?</h3>
+                    <p className="text-sm md:text-base font-semibold text-black/75 leading-relaxed">
+                      Potatopay is an integration service that enables creators to receive financial support from their fans. It isn't a live-streaming tool, but it can connect seamlessly with platforms such as YouTube, Twitch, and others.
+                    </p>
+                  </div>
+
+                  <div className="rounded-3xl border-[3px] border-black bg-white p-5 md:p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-2">
+                    <h3 className="text-sm md:text-base font-black">Can I use Potatopay?</h3>
+                    <p className="text-sm md:text-base font-semibold text-black/75 leading-relaxed">
+
+                      Yes, Potatopay is open to various activities such as game streaming, tutorials, just chatting, etc., as long as they comply with Indian Law. See our{" "}
+                      <a href="/policy/terms-and-conditions" className="underline font-black">
+                        Terms &amp; Conditions
+                      </a>
+                      .
+                    </p>
+                  </div>
+
+                  <div className="rounded-3xl border-[3px] border-black bg-white p-5 md:p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-2">
+                    <h3 className="text-sm md:text-base font-black">
+                      I&apos;m not a streamer. Can I still use Potatopay?
+                    </h3>
+                    <p className="text-sm md:text-base font-semibold text-black/75 leading-relaxed">
+                      Yes, support is available in your Potatopay account even if it's not live. The downside: there's no real-time notification when tips come in, but you can check in the 'Transactions' menu.
+                    </p>
+                  </div>
+
+                  <div className="rounded-3xl border-[3px] border-black bg-white p-5 md:p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-2">
+                    <h3 className="text-sm md:text-base font-black">
+                      What live streaming platforms can be integrated with Potatopay?
+                    </h3>
+                    <p className="text-sm md:text-base font-semibold text-black/75 leading-relaxed">Potatopay integrates with broadcasting software that supports{" "}
+                      '<span className="font-black">Browser Source</span>', such as OBS or Streamlabs.
+                    </p>
+                  </div>
+
+                  <div className="rounded-3xl border-[3px] border-black bg-white p-5 md:p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-2">
+                    <h3 className="text-sm md:text-base font-black">How can I use Potatopay?</h3>
+                    <p className="text-sm md:text-base font-semibold text-black/75 leading-relaxed">
+                      Register using Google-signin, verify your personal details, verify your bank account, setup an overlay for live streaming, attach the QR code and Potatopay link, and receive support. Initial verification is essential for fund disbursement.
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              <div className="rounded-3xl border-[3px] border-black bg-white p-5 md:p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-3">
-                <h2 className="text-lg md:text-xl font-black">
-                  Can I get a refund after I support a creator?
+              {/* Sending / Receiving Support */}
+              <div className="space-y-4">
+                <h2 className="text-base md:text-lg font-black uppercase tracking-[0.2em] text-black/70">
+                  Sending / Receiving Support
                 </h2>
-                <p className="text-sm md:text-base font-semibold text-black/75 leading-relaxed">
-                  No. All tips made through PotatoPay are final and non-refundable. Support is voluntary and not a purchase of goods or services. If there’s a technical issue or duplicate charge, write to us at  <a
-                    href="mailto:support@potatopay.co"
-                    className="underline font-black"
-                  >
-                    support@potatopay.co
-                  </a>
-                  .
-                </p>
+
+                <div className="space-y-3">
+                  <div className="rounded-3xl border-[3px] border-black bg-white p-5 md:p-6
+                      shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-2">
+                    <h3 className="text-sm md:text-base font-black">
+                      Why can&apos;t I pay directly via the Potatopay QR code?
+                    </h3>
+                    <p className="text-sm md:text-base font-semibold text-black/75 leading-relaxed">
+                      Potatopay QR code is for redirecting you to support page where you can complete the transaction.
+                    </p>
+                  </div>
+
+                  <div className="rounded-3xl border-[3px] border-black bg-white p-5 md:p-6
+                      shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-2">
+                    <h3 className="text-sm md:text-base font-black">
+                      What is the minimum support fund and minimum disbursement?
+                    </h3>
+                    <p className="text-sm md:text-base font-semibold text-black/75 leading-relaxed">
+                      The minimum support fund is ₹1, the minimum fund that can be disbursed is ₹10.
+                    </p>
+                  </div>
+
+                  <div className="rounded-3xl border-[3px] border-black bg-white p-5 md:p-6
+                      shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-2">
+                    <h3 className="text-sm md:text-base font-black">Can I refund the support?</h3>
+                    <p className="text-sm md:text-base font-semibold text-black/75 leading-relaxed">
+                      Only if the person you supported raise a ticket to refund a transaction. Read our{" "}
+                      <a href="/policy/refund-and-cancellation-policy" className="underline font-black">
+                        Refund &amp; Cancellation
+                      </a>
+                      {" "}policy for more information.
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              <div className="rounded-3xl border-[3px] border-black bg-white p-5 md:p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-3">
-                <h2 className="text-lg md:text-xl font-black">
-                  When will my earnings be visible in my PotatoPay wallet?
+              {/* Personal Data Settings */}
+              <div className="space-y-4">
+                <h2 className="text-base md:text-lg font-black uppercase tracking-[0.2em] text-black/70">
+                  Personal Data Settings
                 </h2>
-                <p className="text-sm md:text-base font-semibold text-black/75 leading-relaxed">
-                  Once a supporter sends a tip, the payment gateway usually confirms it within 1–2 business days. Your dashboard balance updates automatically and settlements are processed via Razorpay Route to your linked bank account on the next payout cycle.
-                </p>
+
+                <div className="space-y-3">
+                  <div className="rounded-3xl border-[3px] border-black bg-white p-5 md:p-6
+                      shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-2">
+                    <h3 className="text-sm md:text-base font-black">
+                      The email I registered is wrong, can I change it?
+                    </h3>
+                    <p className="text-sm md:text-base font-semibold text-black/75 leading-relaxed">
+                      Yes, send an email to{" "}
+                      <a href="mailto:support@potatopay.co" className="underline font-black">
+                        support@potatopay.co
+                      </a>{" "}
+                      or DM us on{" "}
+                      <a target="_blank" href="https://www.instagram.com/potatopay.co" className="underline font-black">
+                        Instagram
+                      </a>{" "}
+                      to update your registered email.
+                    </p>
+                  </div>
+
+                  <div className="rounded-3xl border-[3px] border-black bg-white p-5 md:p-6
+                      shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-2">
+                    <h3 className="text-sm md:text-base font-black">I forgot my 2FA code, how do I get it?</h3>
+                    <p className="text-sm md:text-base font-semibold text-black/75 leading-relaxed">
+                      The 2FA code is automatically generated by Google Authenticator and changes periodically. Do not delete the app while 2FA is active on Potatopay.
+                    </p>
+                  </div>
+
+                  <div className="rounded-3xl border-[3px] border-black bg-white p-5 md:p-6
+                      shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-2">
+                    <h3 className="text-sm md:text-base font-black">Can 2FA be disabled?</h3>
+                    <p className="text-sm md:text-base font-semibold text-black/75 leading-relaxed">
+                      Yes, you can disable it by going to <span className="font-black">Profile &rarr; Security &rarr; Disable 2FA</span>, or you can {" "}
+                      <a href="mailto:support@potatopay.co" className="underline font-black">
+                        email
+                      </a>{" "} or DM to us on {" "}
+                      <a target="_blank" href=" https://www.instagram.com/potatopay.co" className="underline font-black">
+                        Instagram
+                      </a>{" "} and {" "}
+                      <a target="_blank" href="https://x.com/potatopayco" className="underline font-black">
+                        X.com
+                      </a>{" "}
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              <div className="rounded-3xl border-[3px] border-black bg-white p-5 md:p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-3">
-                <h2 className="text-lg md:text-xl font-black">
-                  What is the minimum withdrawal amount for creators
+              {/* Fees & Other */}
+              <div className="space-y-4">
+                <h2 className="text-base md:text-lg font-black uppercase tracking-[0.2em] text-black/70">
+                  Fees &amp; Other
                 </h2>
-                <p className="text-sm md:text-base font-semibold text-black/75 leading-relaxed">
-                  There’s no manual withdrawal needed. PotatoPay automatically settles your earnings once they are confirmed, after deducting the 10% platform fee and applicable taxes. If your available balance crosses ₹10,000, you can request an instant withdrawal; otherwise, it will be settled automatically in the next payout cycle.
+
+                <div className="space-y-3">
+                  <div className="rounded-3xl border-[3px] border-black bg-white p-5 md:p-6
+                      shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-2">
+                    <h3 className="text-sm md:text-base font-black">
+                      Do supporters have to pay any fees?
+                    </h3>
+                    <p className="text-sm md:text-base font-semibold text-black/75 leading-relaxed">
+                      No. Supporters do not pay or bear any additional fees. The full amount paid by the supporter is processed, and all applicable fees are borne by the streamer/creator receiving the payment.
+                    </p>
+                  </div>
+
+                  <div className="rounded-3xl border-[3px] border-black bg-white p-5 md:p-6
+                      shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-2">
+                    <h3 className="text-sm md:text-base font-black">What is a service fee?</h3>
+                    <p className="text-sm md:text-base font-semibold text-black/75 leading-relaxed">
+                      A service fee is a platform charge deducted from each successful transactoin recieved by a streamer or vendor.
+                    </p>
+                    <ul className="list-disc ml-6">
+                      <li className="text-sm md:text-base font-semibold text-black/75 leading-relaxed">
+                        <b>2.5%</b> for users on the <b>Premium Plan</b>.
+                      </li>
+                      <li className="text-sm md:text-base font-semibold text-black/75 leading-relaxed">
+                        <b>12%</b> for users on the <b>Free Plan</b>.
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="rounded-3xl border-[3px] border-black bg-white p-5 md:p-6
+                      shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-2">
+                    <h3 className="text-sm md:text-base font-black">
+                      What does "service fee borne by the streamer" mean?
+                    </h3>
+                    <p className="text-sm md:text-base font-semibold text-black/75 leading-relaxed">
+                      It means that the streamer or creator is responsible for paying the service fee. This fee is <b>automatically deducted</b> from:
+                    </p>
+                    <ul className="list-disc ml-6">
+                      <li className="text-sm md:text-base font-semibold text-black/75 leading-relaxed">
+                        Each transaction recieved, and
+                      </li>
+                      <li className="text-sm md:text-base font-semibold text-black/75 leading-relaxed">
+                        Any applicable subscription or plan charges
+                      </li>
+                    </ul>
+                    <p className="text-sm md:text-base font-semibold text-black/75 leading-relaxed">
+                      The supported is    <b>not affected</b> by this deduction                 </p>
+                  </div>
+                </div>
+
+                <p className="mt-4 text-xs font-semibold text-black/50 text-right">
+                  Last Updated on 19 Dec 2025
                 </p>
               </div>
-
-              <p className="mt-4 text-xs font-semibold text-black/50 text-right">
-                Last Updated on 19 Dec 2025
-              </p>
             </section>
-
-
           </div>
         </main>
         {/* Footer */}
@@ -175,7 +336,7 @@ export default function FaqPage() {
                 </h3>
               </div>
               <p className="text-sm font-semibold text-black/80 max-w-2xl mx-auto">
-                PotatoPay speaks your language, fits your flow, and supports you from Day 1. No minimum followers. No long waitlists.                <a
+                Potatopay speaks your language, fits your flow, and supports you from Day 1. No minimum followers. No long waitlists.                <a
                   href="mailto:support@potatopay.co"
                   className="underline font-black"
                 >
@@ -188,8 +349,8 @@ export default function FaqPage() {
             <div className="border-t-[2px] border-black/20 pt-8 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
               <div className="space-y-1">
                 <p className="text-sm font-black">
-                  {/* © {new Date().getFullYear()} PotatoPay.co */}
-                  © 2025 PotatoPay.co
+                  {/* © {new Date().getFullYear()} Potatopay.co */}
+                  © 2025 Potatopay Private Limited.
 
                 </p>
                 <p className="text-[11px] font-semibold text-black/60">
